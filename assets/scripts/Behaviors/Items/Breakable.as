@@ -139,10 +139,10 @@ class Breakable : IDamageTaker
 	{
 		return max(1, int(dmg / (1.0f + g_mpEnemyHealthScale * m_mpScaleFact)));
 	}
-	
+
 	int DamageEffects(int dmg, vec2 pos, vec2 dir, Actor@ attacker)
 	{
-		if (!m_unit.IsValid() || m_unit.GetPhysicsBody() is null)
+		if (!m_unit.IsValid() || m_unit.IsDestroyed() || m_unit.GetPhysicsBody() is null)
 			return 0;
 
 		if (m_health != -1)
@@ -237,7 +237,7 @@ class Breakable : IDamageTaker
 			else if (!netsyncedCorpse && m_corpse !is null)
 				m_corpse.Produce(g_scene, m_unit.GetPosition());
 			
-			m_unit = UnitPtr();
+			@m_corpse = null;
 		}
 		
 		return dmg;

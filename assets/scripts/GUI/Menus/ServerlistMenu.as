@@ -20,6 +20,8 @@ namespace Menu
 		Sprite@ m_spriteButtonHover;
 		Sprite@ m_spriteButtonDown;
 
+		int m_charLevel;
+
 		ServerlistMenu(MenuProvider@ provider)
 		{
 			super(provider);
@@ -36,6 +38,37 @@ namespace Menu
 			@m_spriteButtonDown = def.GetSprite("listitem-down");
 
 			Lobby::ListLobbies();
+
+			auto svChar = LoadCharacter();
+			if (svChar !is null)
+			{
+				m_charLevel = GetParamInt(UnitPtr(), svChar, "level", false, 1);
+
+				string name = GetParamString(UnitPtr(), svChar, "name");
+				string charClass = GetParamString(UnitPtr(), svChar, "class");
+
+				auto classColors = CharacterColors::GetClass(charClass);
+
+				int colorSkin = GetParamInt(UnitPtr(), svChar, "color-skin");
+				int color1 = GetParamInt(UnitPtr(), svChar, "color-1");
+				int color2 = GetParamInt(UnitPtr(), svChar, "color-2");
+				int color3 = GetParamInt(UnitPtr(), svChar, "color-3");
+
+				auto wCharUnit = cast<UnitWidget>(m_widget.GetWidgetById("char-unit"));
+				wCharUnit.AddUnit("players/" + charClass + ".unit", "idle-3");
+				wCharUnit.m_multiColors.insertLast(classColors.m_skin[colorSkin % classColors.m_skin.length()]);
+				wCharUnit.m_multiColors.insertLast(classColors.m_1[color1 % classColors.m_1.length()]);
+				wCharUnit.m_multiColors.insertLast(classColors.m_2[color2 % classColors.m_2.length()]);
+				wCharUnit.m_multiColors.insertLast(classColors.m_3[color3 % classColors.m_3.length()]);
+
+				string charClassName = Resources::GetString(".class." + charClass);
+				auto wName = cast<TextWidget>(m_widget.GetWidgetById("char-name"));
+				wName.SetText(Resources::GetString(".mainmenu.serverlist.charname", {
+					{ "name", name },
+					{ "lvl", m_charLevel },
+					{ "class", charClassName }
+				}));
+			}
 		}
 
 		void Show() override
@@ -102,34 +135,64 @@ namespace Menu
 			for (uint i = 0; i < lobbies.length(); i++)
 			{
 				string lobbyName = Lobby::GetLobbyData(lobbies[i], "name");
-				//bool lobbyPlaying = (Lobby::GetLobbyData(lobbies[i], "playing") == "1");
 				int lobbyPlayerCount = Lobby::GetLobbyPlayerCount(lobbies[i]);
 				int lobbyPlayerCountMax = Lobby::GetLobbyPlayerCountMax(lobbies[i]);
 				int lobbyPing = Lobby::GetLobbyPing(lobbies[i]);
-				//GameDifficulty difficulty = GameDifficulty(parseInt(Lobby::GetLobbyData(lobbies[i], "difficulty")));
+
+				int maxLevel = parseInt(Lobby::GetLobbyData(lobbies[i], "max-level"));
+				int minLevel = parseInt(Lobby::GetLobbyData(lobbies[i], "min-level"));
+				int ngp = parseInt(Lobby::GetLobbyData(lobbies[i], "ngp"));
 
 				MenuServerListItem@ wLobbyItem = cast<MenuServerListItem>(m_listTemplate.Clone());
 				wLobbyItem.m_visible = true;
 				wLobbyItem.m_func = "join " + lobbies[i];
 				wLobbyItem.Set(this, lobbyName, lobbyPlayerCount, lobbyPlayerCountMax, lobbyPing);
 
-				/*
-				auto wDiff = cast<TextWidget>(wLobbyItem.GetWidgetById("difficulty"));
-				if (wDiff !is null)
+				if (lobbyPlayerCount >= lobbyPlayerCountMax)
+					wLobbyItem.m_enabled = false;
+				else if (m_charLevel < minLevel || m_charLevel > maxLevel)
+					wLobbyItem.m_enabled = false;
+
+				if (minLevel > 1 && maxLevel < 60)
 				{
-					switch (difficulty)
-					{
-						case GameDifficulty::Easy: wDiff.SetText(Resources::GetString(".difficulty.easy")); break;
-						case GameDifficulty::Normal: wDiff.SetText(Resources::GetString(".difficulty.normal")); break;
-						case GameDifficulty::Hard: wDiff.SetText(Resources::GetString(".difficulty.hard")); break;
-						case GameDifficulty::Serious: wDiff.SetText(Resources::GetString(".difficulty.serious")); break;
-					}
+					string strMinLevel = "" + minLevel;
+					string strMaxLevel = "" + maxLevel;
+					if (m_charLevel < minLevel)
+						strMinLevel = "\\cff0000" + minLevel;
+					if (m_charLevel > maxLevel)
+						strMaxLevel = "\\cff0000" + maxLevel;
+					wLobbyItem.m_tooltipText = Resources::GetString(".mainmenu.serverlist.level-restriction.both", {
+						{ "min", strMinLevel },
+						{ "max", strMaxLevel }
+					});
+				}
+				else if (minLevel > 1)
+				{
+					string strMinLevel = "" + minLevel;
+					if (m_charLevel < minLevel)
+						strMinLevel = "\\cff0000" + minLevel + "\\d";
+					wLobbyItem.m_tooltipText = Resources::GetString(".mainmenu.serverlist.level-restriction.min", {
+						{ "min", strMinLevel }
+					});
+				}
+				else if (maxLevel < 60)
+				{
+					string strMaxLevel = "" + maxLevel;
+					if (m_charLevel > maxLevel)
+						strMaxLevel = "\\cff0000" + maxLevel + "\\d";
+					wLobbyItem.m_tooltipText = Resources::GetString(".mainmenu.serverlist.level-restriction.max", {
+						{ "max", strMaxLevel }
+					});
 				}
 
-				auto wPing = cast<TextWidget>(wLobbyItem.GetWidgetById("ping"));
-				if (wPing !is null)
-					wPing.SetText((ping < 0) ? "?" : ("" + ping));
-				*/
+				if (ngp > 0)
+				{
+					if (wLobbyItem.m_tooltipText != "")
+						wLobbyItem.m_tooltipText += "\n\\d";
+					wLobbyItem.m_tooltipText += Resources::GetString(".mainmenu.serverlist.ngp", {
+						{ "ngp", ngp }
+					});
+				}
 
 				m_list.AddChild(wLobbyItem);
 			}

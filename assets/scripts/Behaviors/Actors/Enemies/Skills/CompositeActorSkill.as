@@ -159,6 +159,9 @@ class CompositeActorSkill : ICompositeActorSkill
 		}
 		else
 			m_skillAimDir = normalize(xy(m_behavior.m_target.m_unit.GetPosition()) - pos);
+
+		if (m_behavior.m_buffs.Confuse())
+			m_skillAimDir = addrot(m_skillAimDir, randfn() * PI / 3.0f);
 	}
 	
 	void Update(int dt, bool isCasting)

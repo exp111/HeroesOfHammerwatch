@@ -10,7 +10,7 @@ namespace Tweak
 	const int DashSpeed = 12;
 	const int DashDuration = 120;
 
-	const float PerkRefundScale = 0.9f;
+	float PerkRefundScale = 0.9f;
 	const float HealScalePerLevel = 1.0f;
 
 	const int ExtraLives = 0;

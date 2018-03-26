@@ -54,7 +54,6 @@ namespace Fountain
 
 	FountainEffect RandomEffectFromArray(array<FountainEffect> effects, int num, FountainEffect current)
 	{
-		print("Selecting " + num + " effects from " + effects.length());
 		FountainEffect ret = FountainEffect::None;
 		for (int i = 0; i < num && effects.length() > 0; i++)
 		{
@@ -66,7 +65,6 @@ namespace Fountain
 				continue;
 			}
 
-			print("  Selecting: " + int(effects[index]));
 			ret = FountainEffect(ret | effects[index]);
 			effects.removeAt(index);
 		}

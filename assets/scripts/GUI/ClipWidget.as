@@ -13,6 +13,8 @@ class ClipWidget : Widget
 		m_clipping = ctx.GetBoolean("clipping", false, m_clipping);
 		m_clipPadding = ctx.GetVector4("clippadding", false);
 
+		LoadWidthHeight(ctx, false);
+
 		Widget::Load(ctx);
 	}
 
@@ -50,4 +52,11 @@ class ClipWidget : Widget
 		if (useDoubleClipping)
 			sb.PopClipping();
 	}
+}
+
+ref@ LoadClipWidget(WidgetLoadingContext &ctx)
+{
+	ClipWidget@ w = ClipWidget();
+	w.Load(ctx);
+	return w;
 }

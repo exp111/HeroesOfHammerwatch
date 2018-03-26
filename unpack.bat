@@ -1,0 +1,1 @@
+PACKAGER.exe --unpack=assets.bin --destination=assets

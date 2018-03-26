@@ -27,15 +27,10 @@ void GenerateDungeon(RandomLevel@ gameMode, int levelCount, int shortcut, int nu
 	EnemyPlacement enemyPlacer;
 	
 	print("LevelCount: " + levelCount);
-	
-	//levelCount = 16;
-	//levelCount = 12;
-	//levelCount = 8;
-	//levelCount = 4;
+
 	ivec3 lvl = CalcLevel(levelCount);
 	
-	
-	float levelSizeMul = 1.0f + min(0.5f, 0.1f * g_ngp);
+	float levelSizeMul = 1.0f + min(0.5f, 0.08f * g_ngp);
 	
 	if (Fountain::HasEffect(FountainEffect::BiggerLevels))
 		levelSizeMul *= 1.25f;

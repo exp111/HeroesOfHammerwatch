@@ -206,6 +206,9 @@ class ScalableSpriteButtonWidget : ICheckableWidget, Widget
 				textPos.x = m_textOffset.x;
 			textPos.y = m_height / 2.0f - m_text.GetHeight() / 2.0f + m_textOffset.y;
 
+			textPos.x = int(textPos.x);
+			textPos.y = int(textPos.y);
+
 			if (textPos.x < m_width)
 				sb.DrawString(pos + textPos, m_text);
 		}

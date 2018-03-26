@@ -4,15 +4,17 @@ namespace Skills
 	{
 		float m_goldScale;
 		float m_dmgScale;
+		float m_dmgCap;
 	
-		GoldFeverMod(float goldScale, float dmgScale)
+		GoldFeverMod(float goldScale, float dmgScale, float dmgCap)
 		{
 			m_goldScale = goldScale;
 			m_dmgScale = dmgScale;
+			m_dmgCap = dmgCap;
 		}	
 
 		float GoldGainScale(PlayerBase@ player) override { return m_goldScale; }
-		vec2 DamageMul(PlayerBase@ player, Actor@ enemy) override { return vec2(1.0f + float(player.m_record.runGold) * m_dmgScale); }
+		vec2 DamageMul(PlayerBase@ player, Actor@ enemy) override { return vec2(1.0f + min(m_dmgCap, float(player.m_record.runGold) * m_dmgScale)); }
 	}
 
 	class GoldFever : Skill
@@ -25,8 +27,9 @@ namespace Skills
 			
 			float goldScale = GetParamFloat(unit, params, "gold-scale", false, 1);
 			float dmgScale = GetParamFloat(unit, params, "dmg-per-gold", false, 0.01);
+			float dmgCap = GetParamFloat(unit, params, "dmg-cap", false, 10);
 			
-			m_modifiers.insertLast(GoldFeverMod(goldScale, dmgScale));
+			m_modifiers.insertLast(GoldFeverMod(goldScale, dmgScale, dmgCap));
 		}
 
 		array<Modifiers::Modifier@>@ GetModifiers() override

@@ -107,7 +107,7 @@ class TargetMovement : MeleeMovement
 
 			//body.SetStatic(false);
 		
-			vec2 dir = m_pathFollower.FollowPath(xy(posMe), xy(m_targetPos)) * speed;
+			vec2 dir = m_pathFollower.FollowPath(xy(posMe), xy(m_targetPos)) * speed * CalcDirSpeed();
 			
 			if (m_behavior.m_buffs.Confuse())
 				dir = GetConfuseDir(dir, speed);

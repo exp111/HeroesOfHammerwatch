@@ -55,6 +55,14 @@ namespace Skills
 				m_owner.WarnCooldown(this, m_cooldownC);
 				return false;
 			}
+			
+			if (m_tickRate == 0)
+			{
+				if (!Trigger(target))
+					return false;
+			}
+			else
+				m_tickRateC = m_tickRate;
 
 			m_cooldownC = m_cooldown;
 			m_castingC = m_castpoint;
@@ -66,12 +74,6 @@ namespace Skills
 			//NOTE: We override ActiveSkill::Activate() here instead of DoActivate because we don't want to spend mana on first activation
 			//      That's also why we explicitly send the network message here
 			(Network::Message("PlayerActiveSkillActivate") << int(m_skillId) << target).SendToAll();
-
-			if (m_tickRate == 0)
-				return Trigger(target);
-			else
-				m_tickRateC = m_tickRate;
-
 			return true;
 		}
 

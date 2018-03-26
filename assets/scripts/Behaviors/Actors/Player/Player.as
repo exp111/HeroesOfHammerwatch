@@ -62,6 +62,7 @@ class Player : PlayerBase, IPreRenderable
 			AddVar("player_speed_max", 5.0f, setPlayerSpeedMaxCVar);
 			AddVar("no_confusion", false, noConfusionCVar);
 			AddVar("level_up_refill", false, levelUpRefillCVar);
+			AddVar("refund_scale", 0.9f, refundScaleCVar);
 
 			AddFunction("exp_help", HelpCFunc);
 
@@ -1389,6 +1390,11 @@ void GiveSkillpointsCFunc(cvar_t@ arg0)
 {
 	int amount = arg0.GetInt();
 	GetLocalPlayerRecord().skillPoints += amount;
+}
+
+void refundScaleCVar(float val)
+{
+	Tweak::PerkRefundScale = val;
 }
 
 void RefundPerksCFunc()

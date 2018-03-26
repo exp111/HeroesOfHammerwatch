@@ -27,7 +27,8 @@ class RangerProjectile : RayProjectile
 		if (!m_hasUpdated)
 			return false;
 	
-		int range = int(m_ttl * m_speed / 33.0);
+		int ttl = m_ttl + 10;
+		int range = int(ttl * m_speed / 33.0f * 1.05f);
 	
 		array<UnitPtr>@ enemies = g_scene.FetchActorsWithOtherTeam(m_owner.Team, pos, range);
 		for (int i = 0; i < int(enemies.length()); i++)
@@ -46,11 +47,8 @@ class RangerProjectile : RayProjectile
 			}
 		}
 
-		vec2 shootDir;
-		if (enemies.length() > 0)
-			shootDir = normalize(xy(enemies[randi(enemies.length())].GetPosition()) - pos);
-		else
-			shootDir = randdir();
+		if (enemies.length() <= 0)
+			return false;
 
 		auto proj = m_unit.GetUnitProducer().Produce(g_scene, xyz(pos));
 		if (!proj.IsValid())
@@ -60,12 +58,16 @@ class RangerProjectile : RayProjectile
 		if (p is null)
 			return false;
 
-		p.Initialize(m_owner, shootDir, m_intensity, m_husk, null, m_weaponInfo);
-		p.m_ttl = m_ttl;
+		auto target = enemies[randi(enemies.length())];			
+		auto tpos = intercept(pos, xy(target.GetPosition()), target.GetMoveDir(), m_speed);
+		vec2 shootDir = normalize(tpos - pos);
+
+		p.Initialize(m_owner, shootDir, m_intensity, m_husk, cast<Actor>(target.GetScriptBehavior()), m_weaponInfo);
+		p.m_ttl = ttl;
 		p.m_penetration = m_penetration;
 		return true;
 	}
-	
+
 	bool HitUnit(UnitPtr unit, vec2 pos, vec2 normal, float selfDmg, bool bounce) override
 	{
 		if (!unit.IsValid())
@@ -145,7 +147,6 @@ class RangerProjectile : RayProjectile
 
 		return false;
 	}
-
 	
 	void Update(int dt) override
 	{

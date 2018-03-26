@@ -122,6 +122,40 @@ float randfn()
 	return randf() * 2.0 - 1.0;
 }
 
+float rottowards(float source, float target, float amount)
+{
+	source = capangle(source);
+	target = capangle(target);
+
+	float difference = abs(source - target);
+	amount = min(amount, difference % PI);
+	
+	if (difference < PI && target > source) return source + amount;
+	if (difference < PI && target < source) return source - amount;
+	if (difference > PI && target > source) return source - amount;
+	if (difference > PI && target < source) return source + amount;
+	if (difference == PI || difference == 0) return source + amount;
+	return source;
+}
+
+float capangle(float angle)
+{
+	angle = angle % TwoPI;
+	if (angle < 0)
+		angle += TwoPI;
+
+	return angle;
+}
+
+float angdiff(float a, float b)
+{
+    if (abs(b - a) < PI)
+        return b - a;
+    if (b > a)
+        return b - a - TwoPI;
+    return b - a + TwoPI;
+}
+
 vec2 addrot(vec2 v, float rad)
 {
 	float ang = atan(v.y, v.x);
@@ -449,7 +483,7 @@ string formatThousands(int number)
 	while (curr > 0)
 	{
 		if (ret != "")
-			ret = " " + ret;
+			ret = "\u2005" + ret;
 
 		string str;
 		if (curr >= 1000)
@@ -564,8 +598,14 @@ string GetNamePart(string resname)
 	return resname.substr(resname.findLast(":") + 1);
 }
 
+int roll_round(float f)
+{
+	int v = abs(int(f));
+	if (randf() < (f - v))
+		v++;
 
-
+	return (f < 0) ? -v : v;
+}
 
 vec2 intercept(vec2 srcPos, vec2 dstPos, vec2 dstVel, float vel)
 {

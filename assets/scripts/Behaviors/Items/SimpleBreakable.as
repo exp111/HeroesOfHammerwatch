@@ -47,7 +47,7 @@ class SimpleBreakable : ADamageTaker
 	
 	int DamageEffects(int dmg, vec2 pos, vec2 dir)
 	{
-		if (!m_unit.IsValid() || m_unit.GetPhysicsBody() is null)
+		if (!m_unit.IsValid() || m_unit.IsDestroyed() || m_unit.GetPhysicsBody() is null)
 			return 0;
 
 		PlaySound3D(m_breakSound, m_unit.GetPosition());
@@ -57,8 +57,6 @@ class SimpleBreakable : ADamageTaker
 			m_gore.OnDeath(dmg / 100.0, xy(m_unit.GetPosition()), atan(dir.y, dir.x));
 
 		m_unit.Destroy();
-		m_unit = UnitPtr();
-
 		return dmg;
 	}
 	

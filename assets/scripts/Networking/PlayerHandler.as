@@ -269,15 +269,6 @@ namespace PlayerHandler
 		plr.m_record.TakePerk(name);
 	}
 
-	void PlayerRespec(uint8 peer)
-	{
-		PlayerHusk@ plr = GetPlayer(peer);
-		if (plr is null)
-			return;
-
-		plr.m_record.perks.removeRange(0, plr.m_record.perks.length());
-	}
-
 	void PlayerPickups(uint8 peer, int num, int numTotal)
 	{
 		PlayerHusk@ plr = GetPlayer(peer);
@@ -570,6 +561,17 @@ namespace PlayerHandler
 		}
 
 		player.RefreshModifiers();
+	}
+
+	void PlayerRespec(uint8 peer, int skillpoints)
+	{
+		auto player = GetPlayer(peer);
+		if (player is null)
+			return;
+
+		player.m_record.ClearSkillUpgrades();
+		player.m_record.skillPoints = skillpoints;
+		player.RefreshSkills();
 	}
 
 	void ProximityTrapEnter(uint8 peer, UnitPtr unit)

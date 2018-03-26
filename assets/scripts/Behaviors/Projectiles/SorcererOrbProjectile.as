@@ -31,13 +31,14 @@ class SorcererOrbProjectile : RayProjectile
 		m_weaponInfo = weapon;
 	}
 	
-
 	bool HitUnit(UnitPtr unit, vec2 pos, vec2 normal, float selfDmg, bool bounce) override
 	{
 		if (!unit.IsValid())
 			return true;
 		
 		ref@ b = unit.GetScriptBehavior();
+		if (b is m_owner)
+			return true;
 
 		auto dt = cast<IDamageTaker>(b);
 		if (dt !is null)
@@ -45,12 +46,26 @@ class SorcererOrbProjectile : RayProjectile
 			if (dt.ShootThrough(pos, m_dir))
 				return true;
 		
-			if (dt.Impenetrable())
+			bounce = dt.Impenetrable();
+			
+			/*
 			{
 				ApplyEffects(m_effects, m_owner, unit, pos, m_dir, m_intensity, m_husk);
 				m_unit.Destroy();
 				return true;
 			}
+			*/
+			
+			auto a = cast<Actor>(b);
+			if (m_blockable && a !is null && a.BlockProjectile(this))
+			{
+				ApplyEffects(m_effects, m_owner, unit, pos, m_dir, m_intensity, m_husk);
+				m_unit.Destroy();
+				return false;
+			}
+			
+			if (!(FilterAction(a, m_owner, m_selfDmg, m_teamDmg, 1, 1) > 0))
+				return true;
 		}
 		
 		if (bounce)

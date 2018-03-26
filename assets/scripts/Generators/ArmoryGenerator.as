@@ -52,7 +52,6 @@ class ArmoryGenerator : DungeonGenerator
 		{
 			ivec2 t = from + dt;
 			PlotLine(from, t, thickness, Cell::Floor);
-			
 			ivec2 roomSz((horizontal ? 5 : 4) + randi(RoomSize - 4), (horizontal ? 4 : 5) + randi(RoomSize - 4));
 			MakeRoom(t, roomSz.x, roomSz.y);
 			
@@ -274,5 +273,12 @@ class ArmoryGenerator : DungeonGenerator
 		
 		placer.PlacePrefab(PointOfInterestType::Prefab4x6Path, 3);
 		placer.PlacePrefab(PointOfInterestType::Prefab6x4Path, 3);
+		
+		if (randi(2) == 0)
+			placer.PlacePrefab(PointOfInterestType::Prefab9x3Cliff, 1);
+		else
+			placer.PlacePrefab(PointOfInterestType::Prefab3x9Cliff, 1);
+		
+		placer.PlacePrefab(PointOfInterestType::Prefab3x3Cliff, 5);
 	}
 }

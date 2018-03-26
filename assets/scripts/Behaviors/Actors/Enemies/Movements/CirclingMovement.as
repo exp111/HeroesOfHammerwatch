@@ -29,9 +29,11 @@ class CirclingMovement : MeleeMovement
 
 	void Update(int dt, bool isCasting) override
 	{
-		if (!m_enabled)
+		if (!m_enabled || isCasting)
 			return;
-	
+			
+		ActorMovement::Update(dt, isCasting);
+		
 		if (!Network::IsServer())
 		{
 			ClientUpdate(dt, isCasting, m_unit.GetMoveDir());
@@ -48,15 +50,9 @@ class CirclingMovement : MeleeMovement
 		}
 		speed *= m_behavior.m_buffs.MoveSpeedMul();
 		
-		if (isCasting)
-			return;
 
-		if (m_behavior.m_target is null || speed == 0)
-		{
-			m_unit.GetPhysicsBody().SetLinearVelocity(0, 0);
-			m_unit.SetUnitScene(m_idleAnim.GetSceneName(m_dir), false);
+		if (MeleeMovement::IdleUpdate(dt, speed))
 			return;
-		}
 
 		vec3 posTarget = m_behavior.m_target.m_unit.GetPosition();
 		vec3 posMe = m_unit.GetPosition();
@@ -121,33 +117,37 @@ class CirclingMovement : MeleeMovement
 			else
 				m_tmDistCheck -= dt;
 
-			body.SetLinearVelocity(moveDir * speed);
-			m_dir = atan(moveDir.y, moveDir.x);
-
-			SetWalkingAnimation();
-
-			if (m_footsteps !is null)
-			{
-				m_footsteps.m_facingDirection = m_dir;
-				m_footsteps.Update(dt);
-			}
-
 			if (m_lastCanSee)
+			{
+				body.SetLinearVelocity(moveDir * speed);
+				m_dir = atan(moveDir.y, moveDir.x);
+
+				SetWalkingAnimation();
+
+				if (m_footsteps !is null)
+				{
+					m_footsteps.m_facingDirection = m_dir;
+					m_footsteps.Update(dt);
+				}
+				
 				return;
+			}
 		}
+		
 		m_circleDir = 0;
 
 		body.SetStatic(false);
 	
-		vec2 dir = m_pathFollower.FollowPath(xy(posMe), xy(posTarget)) * speed;
+		vec2 dir = m_pathFollower.FollowPath(xy(posMe), xy(posTarget)) * speed * CalcDirSpeed();
 		if (m_behavior.m_buffs.Confuse())
-			dir = GetConfuseDir(dir, speed);
-		if (dir.x != 0 || dir.y != 0)
 		{
-			body.SetLinearVelocity(dir);
+			dir = GetConfuseDir(dir, speed);
 			m_dir = atan(dir.y, dir.x);
 		}
+		else
+			m_dir = m_pathFollower.m_visualDir;
 		
+		body.SetLinearVelocity(dir);
 		SetWalkingAnimation();
 		
 		if (m_footsteps !is null)

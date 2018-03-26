@@ -77,11 +77,13 @@ class PrefabPlacement
 		auto wll = Pattern::Wall;
 		auto nwk = Pattern::NotWalkable;
 		auto any = Pattern::Anything;
+		auto clf = Pattern::Cliff;
 		auto nth = Pattern::Nothing;
 
 		auto cig = PatternCommand::Ignore;
 		auto crs = PatternCommand::Reserve;
 		auto crw = PatternCommand::ReserveWall;
+		auto crc = PatternCommand::ReserveCliff;
 		auto cwl = PatternCommand::ReservedWall;
 		auto cfl = PatternCommand::Floor;
 
@@ -134,6 +136,89 @@ class PrefabPlacement
 			};
 			
 			return PrefabPatternPair(pattern, command, ivec2(1, 1));
+		}
+		
+		
+		case PointOfInterestType::Prefab3x3Cliff:
+		{
+			array<array<Pattern>> pattern = {
+				{clf, clf, clf, clf, clf},
+				{clf, clf, clf, clf, clf},
+				{clf, clf, clf, clf, clf},
+				{clf, clf, clf, clf, clf},
+				{clf, clf, clf, clf, clf},
+				{clf, clf, clf, clf, clf},
+				{clf, clf, clf, clf, clf}
+			};
+			array<array<PatternCommand>> command = {
+				{cig, cig, cig, cig, cig},
+				{cig, cig, cig, cig, cig},
+				{cig, crc, crc, crc, cig},
+				{cig, crc, crc, crc, cig},
+				{cig, crc, crc, crc, cig},
+				{cig, cig, cig, cig, cig},
+				{cig, cig, cig, cig, cig}
+			};
+			
+			return PrefabPatternPair(pattern, command, ivec2(1, 2));
+		}
+		case PointOfInterestType::Prefab9x3Cliff:
+		{
+			array<array<Pattern>> pattern = {
+				{clf, clf, clf, clf, clf, clf, clf, clf, clf, clf, clf},
+				{clf, clf, clf, clf, clf, clf, clf, clf, clf, clf, clf},
+				{clf, clf, clf, clf, clf, clf, clf, clf, clf, clf, clf},
+				{clf, clf, clf, clf, clf, clf, clf, clf, clf, clf, clf},
+				{clf, clf, clf, clf, clf, clf, clf, clf, clf, clf, clf},
+				{clf, clf, clf, clf, clf, clf, clf, clf, clf, clf, clf},
+				{clf, clf, clf, clf, clf, clf, clf, clf, clf, clf, clf}
+			};
+			array<array<PatternCommand>> command = {
+				{cig, cig, cig, cig, cig, cig, cig, cig, cig, cig, cig},
+				{cig, cig, cig, cig, cig, cig, cig, cig, cig, cig, cig},
+				{cig, crc, crc, crc, crc, crc, crc, crc, crc, crc, cig},
+				{cig, crc, crc, crc, crc, crc, crc, crc, crc, crc, cig},
+				{cig, crc, crc, crc, crc, crc, crc, crc, crc, crc, cig},
+				{cig, cig, cig, cig, cig, cig, cig, cig, cig, cig, cig},
+				{cig, cig, cig, cig, cig, cig, cig, cig, cig, cig, cig}
+			};
+			
+			return PrefabPatternPair(pattern, command, ivec2(1, 2));
+		}
+		case PointOfInterestType::Prefab3x9Cliff:
+		{
+			array<array<Pattern>> pattern = {
+				{clf, clf, clf, clf, clf},
+				{clf, clf, clf, clf, clf},
+				{clf, clf, clf, clf, clf},
+				{clf, clf, clf, clf, clf},
+				{clf, clf, clf, clf, clf},
+				{clf, clf, clf, clf, clf},
+				{clf, clf, clf, clf, clf},
+				{clf, clf, clf, clf, clf},
+				{clf, clf, clf, clf, clf},
+				{clf, clf, clf, clf, clf},
+				{clf, clf, clf, clf, clf},
+				{clf, clf, clf, clf, clf},
+				{clf, clf, clf, clf, clf}
+			};
+			array<array<PatternCommand>> command = {
+				{cig, cig, cig, cig, cig},
+				{cig, cig, cig, cig, cig},
+				{cig, crc, crc, crc, cig},
+				{cig, crc, crc, crc, cig},
+				{cig, crc, crc, crc, cig},
+				{cig, crc, crc, crc, cig},
+				{cig, crc, crc, crc, cig},
+				{cig, crc, crc, crc, cig},
+				{cig, crc, crc, crc, cig},
+				{cig, crc, crc, crc, cig},
+				{cig, crc, crc, crc, cig},
+				{cig, cig, cig, cig, cig},
+				{cig, cig, cig, cig, cig}
+			};
+			
+			return PrefabPatternPair(pattern, command, ivec2(1, 2));
 		}
 
 		case PointOfInterestType::Prefab5x5BlockNorth:

@@ -7,7 +7,7 @@ class MenuServerListItem : ScalableSpriteButtonWidget
 	int m_serverPlayersMax;
 
 	BitmapString@ m_textPlayers;
-	BitmapString@ m_textPing;
+	//BitmapString@ m_textPing;
 
 	MenuServerListItem()
 	{
@@ -64,19 +64,19 @@ class MenuServerListItem : ScalableSpriteButtonWidget
 		SetText(name);
 
 		@m_textPlayers = m_font.BuildText(players + " / " + playersMax);
-		m_textPlayers.SetColor(m_colorText);
 
+		/*
 		string ping;
-		
+
 		if (lobbyPing < 0)
 			ping = "?";
 		else if (lobbyPing > 999)
 			ping = "999";
 		else
 			ping = "" + lobbyPing;
-			
+
 		@m_textPing = m_font.BuildText(ping);
-		m_textPing.SetColor(m_colorText);
+		*/
 	}
 
 	bool PassesFilter(string str) override
@@ -92,6 +92,7 @@ class MenuServerListItem : ScalableSpriteButtonWidget
 
 		if (m_textPlayers !is null)
 		{
+			m_textPlayers.SetColor(GetTextColor());
 			sb.DrawString(pos + vec2(
 				m_width - m_textPlayers.GetWidth() - 10 /* - 24 */,
 				m_height / 2.0f - m_textPlayers.GetHeight() / 2.0f

@@ -17,6 +17,7 @@ class DangerAreaBehavior : IOwnedUnit
 	bool m_husk;
 	
 	bool m_netsynced;
+	EffectParams@ m_effectParams;
 	
 
 	DangerAreaBehavior(UnitPtr unit, SValue& params)
@@ -37,6 +38,7 @@ class DangerAreaBehavior : IOwnedUnit
 		m_husk = !Network::IsServer();
 
 		m_netsynced = IsNetsyncedExistance(m_unit.GetUnitProducer().GetNetSyncMode());
+		@m_effectParams = LoadEffectParams(unit, params);
 	}
 	
 	void Initialize(Actor@ owner, float intensity, bool husk)
@@ -115,6 +117,10 @@ class DangerAreaBehavior : IOwnedUnit
 		if (m_ttl > 0 && Network::IsServer() || !m_netsynced)
 		{
 			m_ttl -= dt;
+
+			if (m_effectParams !is null)
+				m_effectParams.Set("ttl", float(m_ttl));
+			
 			if (m_ttl <= 0)
 				m_unit.Destroy();
 		}

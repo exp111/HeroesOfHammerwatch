@@ -1,8 +1,12 @@
 class SorcererProjectile : RayProjectile
 {
+	int m_bounceTTLAdd;
+
 	SorcererProjectile(UnitPtr unit, SValue& params)
 	{
 		super(unit, params);
+		
+		m_bounceTTLAdd = GetParamInt(unit, params, "bounce-ttl-add", false, 0);
 	}
 	
 	void Update(int dt) override
@@ -52,7 +56,7 @@ class SorcererProjectile : RayProjectile
 		if (dt !is null)
 		{
 			if (dt.ShootThrough(pos, m_dir))
-				return false;
+				return true;
 				
 			shoulPassThrough = !dt.Impenetrable();
 			if (dt is m_owner && selfDmg > 0)
@@ -62,21 +66,10 @@ class SorcererProjectile : RayProjectile
 					m_lastCollision = unit;
 					ApplyEffects(m_effects, m_owner, unit, pos, m_dir, m_intensity * selfDmg, m_husk);
 					shouldRetarget = true;
-					
-					if (--m_penetration <= 0)
-					{
-						PlaySound3D(m_soundHit, xyz(pos));
-						m_unit.Destroy();
-					}
 				}
 			}
 			else if (!(FilterAction(cast<Actor>(b), m_owner, m_selfDmg, m_teamDmg, 1, 1) > 0))
 				return true;
-			else if (--m_penetration <= 0)
-			{
-				PlaySound3D(m_soundHit, xyz(pos));
-				m_unit.Destroy();
-			}
 		}
 
 		if (m_lastCollision != unit)
@@ -88,14 +81,23 @@ class SorcererProjectile : RayProjectile
 		
 		if (bounce)
 		{
+			if (--m_penetration <= 0)
+			{
+				PlaySound3D(m_soundHit, xyz(pos));
+				m_unit.Destroy();
+				return false;
+			}
+		
 			m_speed *= m_bounceSpeedMul;
+			m_ttl = int(m_ttl * m_bounceSpeedMul + m_bounceTTLAdd);
+			
 			m_pos = pos;
 			PlaySound3D(m_soundBounce, xyz(pos));
 		
 			Actor@ target = null;
 			if (shouldRetarget)
 			{
-				auto possibleTargets = g_scene.FetchActorsWithOtherTeam(m_owner.Team, pos, uint(m_ttl));
+				auto possibleTargets = g_scene.FetchActorsWithOtherTeam(m_owner.Team, pos, uint(m_ttl * 1.5 + 10));
 				int minDist = 10000000;
 				
 				for (uint i = 0; i < possibleTargets.length(); i++)
@@ -117,14 +119,15 @@ class SorcererProjectile : RayProjectile
 			}
 		
 			if (target !is null)
-				SetDirection(normalize(xy(target.m_unit.GetPosition() - m_unit.GetPosition())));
+			{
+				auto tpos = intercept(pos, xy(target.m_unit.GetPosition()), target.m_unit.GetMoveDir(), m_speed);
+				SetDirection(normalize(tpos - pos));
+			}
 			else if (!shoulPassThrough)
 				SetDirection(normal * -2 * dot(m_dir, normal) + m_dir);
-			
-			return false;
 		}
 
-		return true;
+		return false;
 	}
 
 	/*

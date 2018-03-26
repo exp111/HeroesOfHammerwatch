@@ -3,6 +3,8 @@ class SkillsShopMenuContent : ShopMenuContent
 	Widget@ m_wRowList;
 	Widget@ m_wTemplateRow;
 
+	ScalableSpriteButtonWidget@ m_wRespecButton;
+
 	Widget@ m_wTemplateSkill;
 	Widget@ m_wTemplateSkillOwned;
 	Widget@ m_wTemplateSkillUnavailable;
@@ -11,8 +13,12 @@ class SkillsShopMenuContent : ShopMenuContent
 	Sprite@ m_spriteMana;
 	Sprite@ m_spriteSkillPoints;
 
+	Sprite@ m_spriteGold;
+
 	Upgrades::UpgradeShop@ m_shop;
 	array<array<Upgrades::RecordUpgradeStep@>> m_tiers;
+
+	int m_skillpointsWorth = 0;
 
 	int m_numTiers = 5;
 
@@ -60,6 +66,8 @@ class SkillsShopMenuContent : ShopMenuContent
 		@m_wRowList = m_widget.GetWidgetById("row-list");
 		@m_wTemplateRow = m_widget.GetWidgetById("row-template");
 
+		@m_wRespecButton = cast<ScalableSpriteButtonWidget>(m_widget.GetWidgetById("respec"));
+
 		@m_wTemplateSkill = m_widget.GetWidgetById("skill-template");
 		@m_wTemplateSkillOwned = m_widget.GetWidgetById("skill-owned-template");
 		@m_wTemplateSkillUnavailable = m_widget.GetWidgetById("skill-unavailable-template");
@@ -67,6 +75,8 @@ class SkillsShopMenuContent : ShopMenuContent
 
 		@m_spriteMana = m_def.GetSprite("icon-mana");
 		@m_spriteSkillPoints = m_def.GetSprite("skill-points");
+
+		@m_spriteGold = m_def.GetSprite("icon-gold");
 
 		ReloadList();
 	}
@@ -102,6 +112,11 @@ class SkillsShopMenuContent : ShopMenuContent
 		return GetParamInt(UnitPtr(), arrLevels[level], "mana-cost", false, 0);
 	}
 
+	int GetRespecCost()
+	{
+		return 250 * m_skillpointsWorth;
+	}
+
 	void ReloadList() override
 	{
 		m_wRowList.ClearChildren();
@@ -111,6 +126,8 @@ class SkillsShopMenuContent : ShopMenuContent
 			return;
 
 		auto record = player.m_record;
+
+		m_skillpointsWorth = 0;
 
 		for (int i = 0; i < m_numTiers; i++)
 		{
@@ -173,6 +190,8 @@ class SkillsShopMenuContent : ShopMenuContent
 				else if (step.IsOwned(record))
 				{
 					// Step is owned
+					m_skillpointsWorth += step.m_costSkillPoints;
+
 					auto wNewSkill = m_wTemplateSkillOwned.Clone();
 					wNewSkill.SetID("");
 					wNewSkill.m_visible = true;
@@ -251,11 +270,67 @@ class SkillsShopMenuContent : ShopMenuContent
 			m_wRowList.AddChild(wNewRow);
 		}
 
+		int respecCost = GetRespecCost();
+
+		if (m_skillpointsWorth > 0)
+		{
+			auto gm = cast<Campaign>(g_gameMode);
+			auto town = gm.m_townLocal;
+
+			m_wRespecButton.m_enabled = (town.m_gold >= respecCost);
+			m_wRespecButton.ClearTooltipSubs();
+			m_wRespecButton.AddTooltipSub(m_spriteGold, formatThousands(respecCost));
+			m_wRespecButton.m_tooltipTitle = Resources::GetString(".shop.skills.respec.tooltip.title");
+			m_wRespecButton.m_tooltipText = Resources::GetString(".shop.skills.respec.tooltip", {
+				{ "skillpoints", formatThousands(m_skillpointsWorth) }
+			});
+		}
+		else
+		{
+			m_wRespecButton.m_enabled = false;
+			m_wRespecButton.m_tooltipTitle = "";
+			m_wRespecButton.m_tooltipText = "";
+		}
+
 		m_shopMenu.DoLayout();
 	}
 
 	string GetGuiFilename() override
 	{
 		return "gui/shop/skills.gui";
+	}
+
+	void OnFunc(Widget@ sender, string name) override
+	{
+		if (name == "respec")
+		{
+			g_gameMode.ShowDialog(
+				"respec",
+				Resources::GetString(".shop.skills.respec.prompt", {
+					{ "gold", formatThousands(GetRespecCost()) },
+					{ "skillpoints", m_skillpointsWorth }
+				}),
+				Resources::GetString(".menu.yes"),
+				Resources::GetString(".menu.no"),
+				m_shopMenu
+			);
+		}
+		else if (name == "respec yes")
+		{
+			auto gm = cast<Campaign>(g_gameMode);
+
+			gm.m_townLocal.m_gold -= GetRespecCost();
+
+			auto player = GetLocalPlayer();
+			player.m_record.ClearSkillUpgrades();
+			player.m_record.skillPoints += m_skillpointsWorth;
+			player.RefreshSkills();
+
+			ReloadList();
+
+			(Network::Message("PlayerRespec") << player.m_record.skillPoints).SendToAll();
+		}
+		else
+			ShopMenuContent::OnFunc(sender, name);
 	}
 }

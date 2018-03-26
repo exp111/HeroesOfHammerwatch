@@ -3,7 +3,7 @@ class Campaign : BaseGameMode
 	float StartingHealth = 1.0;
 
 	HUD@ m_hud;
-	//HUDCoop@ m_hudCoop;
+	HUDCoop@ m_hudCoop;
 	Concept@ m_concept;
 	MinimapQuery@ m_minimap;
 
@@ -60,7 +60,7 @@ class Campaign : BaseGameMode
 		m_guiBuilder.AddWidgetProducer("upgradeshopitem", LoadUpgradeShopButtonWidget);
 
 		@m_hud = HUD(m_guiBuilder);
-		//@m_hudCoop = HUDCoop(m_guiBuilder);
+		@m_hudCoop = HUDCoop(m_guiBuilder);
 		@m_concept = Concept(m_guiBuilder);
 
 		m_userWindows.insertLast(@m_gameOver = HWRGameOver(m_guiBuilder));
@@ -132,7 +132,28 @@ class Campaign : BaseGameMode
 			}
 		}
 		else
+		{
 			m_levelCount = GetVarInt("g_start_level");
+			if (Network::IsServer())
+			{
+				string strStartHostNgp = GlobalCache::Get("start_host_ngp");
+				if (strStartHostNgp != "")
+				{
+					g_ngp = parseInt(strStartHostNgp);
+					m_townLocal.m_currentNgp = g_ngp;
+					GlobalCache::Set("start_host_ngp", "");
+				}
+				else
+					g_ngp = m_townLocal.m_currentNgp;
+			}
+		}
+
+		if (Network::IsServer() && Lobby::IsInLobby())
+		{
+			SValueBuilder builder;
+			builder.PushInteger(g_ngp);
+			SendSystemMessage("SetNGP", builder.Build());
+		}
 
 		BaseGameMode::Start(peer, save, sMode);
 
@@ -190,6 +211,8 @@ class Campaign : BaseGameMode
 	void Save(SValueBuilder& builder) override
 	{
 		BaseGameMode::Save(builder);
+
+		builder.PushInteger("ngp", g_ngp);
 
 		builder.PushInteger("fountain-effects", int(m_fountainEffects));
 		builder.PushInteger("dungeon-time", m_timePlayedDungeon);
@@ -422,7 +445,7 @@ class Campaign : BaseGameMode
 		}
 
 		m_hud.Update(ms, record);
-		//m_hudCoop.Update(ms);
+		m_hudCoop.Update(ms);
 
 		m_concept.Update(ms);
 	}
@@ -468,7 +491,7 @@ class Campaign : BaseGameMode
 		}
 
 		m_hud.Draw(sb, idt);
-		//m_hudCoop.Draw(sb, idt);
+		m_hudCoop.Draw(sb, idt);
 
 		m_concept.Draw(sb, idt);
 

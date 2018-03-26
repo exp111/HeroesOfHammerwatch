@@ -47,7 +47,7 @@ class PrisonGenerator : MinesGenerator
 		int w = Width / 16;
 		int h = Height / 16;
 	
-		TryMakeRoom(junctions, ivec2(w / 2, h / 2), 10, 12);
+		TryMakeRoom(junctions, ivec2(w / 2, h / 2), 12, 14);
 		rooms.insertLast(ivec2(w / 2, h / 2));
 		
 		return 1.f;
@@ -82,18 +82,34 @@ class PrisonGenerator : MinesGenerator
 		
 		placer.PlacePrefabs(rooms, 11, 3);
 		
+
+		array<PointOfInterestType> wallBlocks = { 
+			PointOfInterestType::Prefab5x5BlockNorth,
+			PointOfInterestType::Prefab5x5BlockSouth,
+			PointOfInterestType::Prefab5x6BlockEast,
+			PointOfInterestType::Prefab5x6BlockWest
+		};
+
+		placer.PlacePrefabs(wallBlocks, 6 + g_ngp * 2, 2 + g_ngp);
 		
 
 		placer.PlacePrefab(PointOfInterestType::Prefab13x13Block, 1);
 		placer.PlacePrefab(PointOfInterestType::Prefab9x9Block, 1);
-		placer.PlacePrefab(PointOfInterestType::Prefab7x7Block, 2);
-		placer.PlacePrefab(PointOfInterestType::Prefab5x5Block, 3);
-		placer.PlacePrefab(PointOfInterestType::Prefab3x3Block, 4);
+		placer.PlacePrefab(PointOfInterestType::Prefab7x7Block, 2 + g_ngp);
+		placer.PlacePrefab(PointOfInterestType::Prefab5x5Block, 3 + g_ngp);
+		placer.PlacePrefab(PointOfInterestType::Prefab3x3Block, 4 + g_ngp);
 		
 		FillDeadEnds(placer.m_ptrnMtch, m_brush, NumDeadEndsFill);
 		
 		placer.PlacePrefab(PointOfInterestType::Prefab2x6Path, 3 + g_ngp);
 		placer.PlacePrefab(PointOfInterestType::Prefab6x3Path, 3 + g_ngp);
 		placer.PlacePrefab(PointOfInterestType::Prefab2x3Junction, 3 + g_ngp);
+		
+		if (randi(2) == 0)
+			placer.PlacePrefab(PointOfInterestType::Prefab9x3Cliff, 1);
+		else
+			placer.PlacePrefab(PointOfInterestType::Prefab3x9Cliff, 1);
+		
+		placer.PlacePrefab(PointOfInterestType::Prefab3x3Cliff, 3);
 	}
 }

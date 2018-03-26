@@ -393,6 +393,6 @@ class PlayerBase : Actor
 	{
 		AddFloatingText(FloatingTextType::PlayerHealed, "" + amt, m_unit.GetPosition());
 		m_dmgColor = vec4(0, 1, 0, 1);
-		m_record.hp += float(amt) / float(m_record.MaxHealth());
+		m_record.hp += float(amt) / float(m_record.MaxHealth() + m_record.modifiers.StatsAdd(this).x);
 	}
 }

@@ -1,5 +1,13 @@
 namespace GameModeHandler
 {
+	void SetNgp(int ngp)
+	{
+		if (Network::IsServer())
+			return;
+
+		g_ngp = ngp;
+	}
+
 	void GameOver(SValue@ sv)
 	{
 		BaseGameMode@ gm = cast<BaseGameMode>(g_gameMode);

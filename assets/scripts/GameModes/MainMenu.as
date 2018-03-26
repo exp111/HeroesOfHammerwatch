@@ -20,6 +20,10 @@ class MainMenu : BaseGameMode
 	bool m_testLevel;
 	bool m_hostPrivate;
 	string m_hostName;
+	int m_hostMaxPlayers;
+	int m_hostMaxLevel;
+	int m_hostMinLevel;
+	int m_hostNgp;
 	uint64 m_inviteAcceptID;
 
 	int m_frameCount;
@@ -41,7 +45,7 @@ class MainMenu : BaseGameMode
 		if (!VarExists("g_debug_menu"))
 			AddVar("g_debug_menu", false);
 		if (!VarExists("g_multi_test"))
-			AddVar("g_multi_test", false, null);
+			AddVar("g_multi_test", false, null, cvar_flags::Cheat);
 
 		@m_mainMenu = MenuProvider();
 		@m_ingameMenu = MenuProvider();
@@ -135,6 +139,8 @@ class MainMenu : BaseGameMode
 
 			prefab.Fabricate(g_scene, spawn.Position);
 		}
+
+		m_hostNgp = m_town.m_currentNgp;
 	}
 
 	void SpawnPlayers() override
@@ -285,7 +291,7 @@ class MainMenu : BaseGameMode
 		if (loadFont is null)
 			return;
 		
-		auto loadText = loadFont.BuildText(Resources::GetString(".menu.loading"), -1, TextAlignment::Left);
+		auto loadText = loadFont.BuildText(Resources::GetString(".menu.loading"), -1, TextAlignment::Center);
 	
 		sb.Begin(m_wndWidth, m_wndHeight, m_wndScale);
 		sb.DrawSprite(null, vec4(-5, -5, m_wndWidth + 10, m_wndHeight + 10), vec4(), vec4(0, 0, 0, 1));
@@ -369,9 +375,15 @@ class MainMenu : BaseGameMode
 
 	void LobbyCreated(bool loadingSave)
 	{
+		print("LobbyCreated()");
 		Lobby::SetPrivate(m_hostPrivate);
 		Lobby::SetLobbyData("name", m_hostName);
-		
+		Lobby::SetPlayerLimit(m_hostMaxPlayers);
+		Lobby::SetLobbyData("max-level", m_hostMaxLevel);
+		Lobby::SetLobbyData("min-level", m_hostMinLevel);
+
+		GlobalCache::Set("start_host_ngp", "" + m_hostNgp);
+
 		if (m_testLevel)
 			Lobby::SetLevel("levels/test_multi.lvl");
 		else
@@ -442,8 +454,12 @@ class MainMenu : BaseGameMode
 	void SystemMessage(string name, SValue@ data)
 	{
 		if (name == "AddChat")
+		{
 			if (m_wChat !is null)
 				m_wChat.AddChat(data.GetString());
+		}
+		else if (name == "SetNGP" && Network::IsServer())
+			Lobby::SetLobbyData("ngp", data.GetInteger());
 	}
 
 	void PlayGame(int numPlrs)

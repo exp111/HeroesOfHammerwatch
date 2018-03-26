@@ -39,7 +39,7 @@ class DelayedBreakable : ADamageTaker
 
 	void DamageEffects()
 	{
-		if (!m_unit.IsValid() || m_unit.GetPhysicsBody() is null)
+		if (!m_unit.IsValid() || m_unit.IsDestroyed() || m_unit.GetPhysicsBody() is null)
 			return;
 
 		PlaySound3D(m_breakSound, m_unit.GetPosition());
@@ -62,7 +62,7 @@ class DelayedBreakable : ADamageTaker
 		else if (!netsyncedCorpse && m_corpse !is null)
 			m_corpse.Produce(g_scene, m_unit.GetPosition());
 
-		m_unit = UnitPtr();
+		@m_corpse = null;
 	}
 
 	void SetDelayed()

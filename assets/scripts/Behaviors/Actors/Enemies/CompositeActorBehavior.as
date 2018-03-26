@@ -386,7 +386,7 @@ class CompositeActorBehavior : Actor
 		if (localPlayer !is null)
 			dmg = localPlayer.DamageActor(this, dmg);
 
-		vec2 dmgAmntParts = ApplyArmorParts(dmg, m_buffs.ArmorMul() * (m_armor + vec2(g_ngp * 5)) * dmg.ArmorMul * (1.0f + g_ngp * 0.6f), m_buffs.DamageTakenMul());
+		vec2 dmgAmntParts = ApplyArmorParts(dmg, m_buffs.ArmorMul() * (m_armor + vec2(g_ngp * 5)) * dmg.ArmorMul * (1.0f + g_ngp * 0.5f), m_buffs.DamageTakenMul());
 		int dmgAmnt = max(0, damage_round(dmgAmntParts.x + dmgAmntParts.y));
 
 		if (!dmg.CanKill && floor(m_hp * float(GetMaxHp())) - dmgAmnt <= 0)
@@ -462,7 +462,7 @@ class CompositeActorBehavior : Actor
 		}
 	
 		m_hp -= float(dmg.Damage) / float(GetMaxHp());
-		m_movement.OnDamaged(dmg.Damage);
+		m_movement.OnDamaged(dmg);
 		
 		
 		if (dmg.Attacker !is null && dmg.Attacker is GetLocalPlayer())
@@ -590,27 +590,27 @@ class CompositeActorBehavior : Actor
 	
 	int TargetValue(vec2 pos, Actor@ target, uint aggroRange)
 	{
-		float weight = 1.0;
+		float weight = 1.0f;
 
 		uint d = uint(dist(pos, xy(target.m_unit.GetPosition())));
 		if (target is m_target)
 		{
 			if (!Tweak::EnemyInfitniteAggro && d > uint(m_maxRange))
 				return -1;
-				
+			/*
 			if (target.Team == g_team_player)
-				weight = 0.25;
-			
-			weight *= 0.75;
+				weight *= 0.25f;
+			*/
+			weight *= 0.7f;
 		}
 		else
 		{
 			if (!Tweak::EnemyInfitniteAggro && d > aggroRange)
 				return -1;	
-				
+			
 			if (target.Team == g_team_player)
-				weight = 0.75;
-		
+				weight *= 0.75f;
+			
 			if (m_mustSeeTarget && !Tweak::EnemiesCanSeeThroughWalls)
 			{
 				RaycastResult res = g_scene.RaycastClosest(pos, xy(target.m_unit.GetPosition()), ~0, RaycastType::Aim);
@@ -677,7 +677,7 @@ class CompositeActorBehavior : Actor
 	
 	void QueuedFetchActors(array<UnitPtr>@ possibleTargets)
 	{
-		m_targetSearchCd = 500 + randi(350);
+		m_targetSearchCd = 500 + randi(500);
 
 		Actor@ newTarget = null;
 		vec2 pos = xy(m_unit.GetPosition());

@@ -14,6 +14,8 @@ namespace Skills
 			if (trigger == Modifiers::EffectTrigger::Kill)
 				m_skill.OnKill();
 		}
+		
+		bool Evasion(PlayerBase@ player, Actor@ enemy) override { return (randf() <= (m_skill.m_stackEvasion * m_skill.m_count)); }
 	}
 
 	class Fervor : Skill
@@ -27,6 +29,7 @@ namespace Skills
 		int m_count;
 		
 		float m_stackSpeed;
+		float m_stackEvasion;
 		
 	
 		Fervor(UnitPtr unit, SValue& params)
@@ -36,6 +39,7 @@ namespace Skills
 			m_timer = GetParamInt(unit, params, "duration");
 			m_maxCount = GetParamInt(unit, params, "max-stacks");
 			m_stackSpeed = GetParamFloat(unit, params, "stack-speed");
+			m_stackEvasion = GetParamFloat(unit, params, "stack-evasion");
 			
 			m_modifiers.insertLast(FervorTrigger(this));
 		}
@@ -65,7 +69,8 @@ namespace Skills
 				m_timerC -= dt;
 				if (m_timerC < 0)
 				{
-					m_count = 0;
+					m_count--;
+					m_timerC += m_timer;
 					RefreshCount();
 				}			
 			}
