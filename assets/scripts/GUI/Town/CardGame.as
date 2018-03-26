@@ -273,14 +273,7 @@ class CardGame : ScriptWidgetHost
 	void LoseCash()
 	{
 		auto gm = cast<Campaign>(g_gameMode);
-		if (Tweak::getAlwaysGold == true)
-		{
-			gm.m_townLocal.m_gold += m_goldLimit;
-		}
-		else
-		{
-			gm.m_townLocal.m_gold -= m_goldLimit;
-		}
+		gm.m_townLocal.m_gold -= m_goldLimit;
 
 		Stats::Add("gambling-gold-lost", m_goldLimit, GetLocalPlayerRecord());
 	}

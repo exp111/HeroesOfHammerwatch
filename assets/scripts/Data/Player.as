@@ -3,8 +3,8 @@ namespace Tweak
 	const int HealAddPerLevel = 100000;
 	const int BaseArmor = 50;
 
-	float PlayerSpeed = 2.4f;
-	float PlayerSpeedMax = 5.0f;
+	const float PlayerSpeed = 2.4f;
+	const float PlayerSpeedMax = 5.0f;
 	const int DashChargeTime = 1500;
 	const int MaxDashes = 8;
 	const int DashSpeed = 12;

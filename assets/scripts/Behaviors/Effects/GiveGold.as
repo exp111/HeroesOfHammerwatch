@@ -40,7 +40,7 @@ void GiveGoldImpl(int amount, Player@ player)
 	if (player is null)
 		return;
 
-	amount = int(amount * g_allModifiers.GoldGainScale(player));
+	amount = roll_round(amount * g_allModifiers.GoldGainScale(player));
 
 	if (Fountain::HasEffect(FountainEffect::MoreGold))
 		amount = int(amount * 1.5f);

@@ -17,7 +17,8 @@ class GiveCombo : IEffect
 		auto player = cast<Player>(target.GetScriptBehavior());
 		if (player !is null)
 		{
-			player.m_comboCount = 10;
+			if (player.m_comboCount < 10)
+				player.m_comboCount = 10;
 			player.m_comboTime = m_time;
 			player.m_comboActive = true;
 		}

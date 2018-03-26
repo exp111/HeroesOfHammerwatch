@@ -15,8 +15,7 @@ class MinesGenerator : DungeonGenerator
 	int RoomSize;
 	
 	[Editable default=5]
-	int NumDeadEndsFill;
-	[Editable default=100]
+	int NumDeadEndsFill;[Editable default=100]
 	int MaxCliffNum;
 	
 	[Editable default=false]
@@ -73,7 +72,7 @@ class MinesGenerator : DungeonGenerator
 		{
 		case 0:
 		{
-			float div = 3.5f;
+			float div = 3.1f;
 			junctions.insertLast(jitterVec2(w / div, h / div, 4));
 			junctions.insertLast(jitterVec2((w*(div-1)) / div, h / div, 4));
 			junctions.insertLast(jitterVec2(w / div, (h*(div-1)) / div, 4));
@@ -231,7 +230,6 @@ class MinesGenerator : DungeonGenerator
 			
 			
 			PatternMatcher ptrnMtch;
-			
 			ptrnMtch.RemoveDiagonals(m_brush);
 			
 			
@@ -336,7 +334,7 @@ class MinesGenerator : DungeonGenerator
 			}
 			else
 				FillDeadEnds(ptrnMtch, m_brush, NumDeadEndsFill);
-				
+			
 			PlaceBreakables();
 			
 			m_brush.GenerateNothingness();
@@ -397,7 +395,7 @@ class MinesGenerator : DungeonGenerator
 			PointOfInterestType::Prefab5x6BlockWest
 		};
 
-		placer.PlacePrefabs(wallBlocks, 6, 2);
+		placer.PlacePrefabs(wallBlocks, 6 + g_ngp * 2, 2 + g_ngp);
 		
 		
 		
@@ -410,9 +408,9 @@ class MinesGenerator : DungeonGenerator
 		else
 			placer.PlacePrefab(PointOfInterestType::Prefab9x9Block, 1);
 		
-		placer.PlacePrefab(PointOfInterestType::Prefab7x7Block, 2);
-		placer.PlacePrefab(PointOfInterestType::Prefab5x5Block, 3);
-		placer.PlacePrefab(PointOfInterestType::Prefab3x3Block, 4);
+		placer.PlacePrefab(PointOfInterestType::Prefab7x7Block, 2 + g_ngp);
+		placer.PlacePrefab(PointOfInterestType::Prefab5x5Block, 3 + g_ngp);
+		placer.PlacePrefab(PointOfInterestType::Prefab3x3Block, 4 + g_ngp);
 		
 		FillDeadEnds(placer.m_ptrnMtch, m_brush, NumDeadEndsFill);
 		

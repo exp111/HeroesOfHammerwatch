@@ -97,7 +97,7 @@ namespace Skills
 				if (!proj.IsValid())
 					continue;
 				
-				IProjectile@ p = cast<IProjectile>(proj.GetScriptBehavior());
+				auto p = cast<IProjectile>(proj.GetScriptBehavior());
 				if (p is null)
 					continue;
 				

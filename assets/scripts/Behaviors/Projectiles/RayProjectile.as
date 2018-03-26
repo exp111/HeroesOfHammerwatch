@@ -68,7 +68,7 @@ class RayProjectile : ProjectileBase
 		array<UnitPtr>@ results = g_scene.QueryRect(m_pos, 1, 1, ~0, RaycastType::Aim);
 		for (uint i = 0; i < results.length(); i++)
 		{
-			if (cast<Player>(results[i].GetScriptBehavior()) !is null)
+			if (cast<PlayerBase>(results[i].GetScriptBehavior()) !is null)
 				continue;
 			if (!HitUnit(results[i], m_pos, nDir, 0, true))
 				return;
@@ -93,7 +93,7 @@ class RayProjectile : ProjectileBase
 		//if (!ShouldCollide(unit))
 		//	return;
 	
-		HitUnit(unit, pos, normal, m_selfDmg, false);
+		HitUnit(unit, pos, normal, m_selfDmg, true);
 	}
 	
 	bool HitUnit(UnitPtr unit, vec2 pos, vec2 normal, float selfDmg, bool bounce)
@@ -122,7 +122,7 @@ class RayProjectile : ProjectileBase
 			if (m_blockable && a !is null && a.BlockProjectile(this))
 			{
 				m_unit.Destroy();
-				return true;
+				return false;
 			}
 		
 			if (dt is m_owner && selfDmg > 0)
@@ -141,7 +141,7 @@ class RayProjectile : ProjectileBase
 						m_intensity *= m_penetrationIntensityMul;
 				}
 				
-				return true;
+				return false;
 			}
 			else if (!(FilterAction(a, m_owner, m_selfDmg, m_teamDmg, 1, 1) > 0))
 				return true;
@@ -202,6 +202,9 @@ class RayProjectile : ProjectileBase
 		{
 			RaycastResult res = results[i];
 			if (!HitUnit(res.FetchUnit(g_scene), res.point, res.normal, m_selfDmg, true))
+				return;
+				
+			if (m_unit.IsDestroyed())
 				return;
 		}
 	

@@ -153,6 +153,7 @@ class HUDCoop : IWidgetHoster
 				m_wPlayerList.AddChild(wNewSeparator);
 
 				DoLayout();
+				DoLayout(); // avoid flickering.. (I hate layout issues)
 			}
 			else
 				return;

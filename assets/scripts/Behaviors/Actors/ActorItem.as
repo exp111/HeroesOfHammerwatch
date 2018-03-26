@@ -227,8 +227,12 @@ class ActorItems
 
 		if (matchingItems.length() <= 0)
 		{
-			if (m_allItemsList.length() > 0)
-				matchingItems.insertLast(m_allItemsList[randi(m_allItemsList.length())]);
+			for (uint i = 0; i < m_allItemsList.length(); i++)
+			{
+				auto item = m_allItemsList[i];
+				if (item.quality == quality && item.requiredFlag == "")
+					matchingItems.insertLast(item);
+			}
 		}
 
 		if (matchingItems.length() <= 0)

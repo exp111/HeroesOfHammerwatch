@@ -43,7 +43,7 @@ void GiveOreImpl(int amount, Player@ player, bool showFloatingText = true)
 	if (player is null)
 		return;
 
-	amount = int(amount * g_allModifiers.OreGainScale(player));
+	amount = roll_round(amount * g_allModifiers.OreGainScale(player));
 
 	NetGiveOreImpl(amount, player);
 

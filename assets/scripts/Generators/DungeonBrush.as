@@ -68,7 +68,11 @@ enum PointOfInterestType
 	Prefab6x4Path,
 	Prefab6x12Path,
 	Prefab6x8Path,
-	Prefab8x4Path
+	Prefab8x4Path,
+	
+	Prefab3x3Cliff,
+	Prefab9x3Cliff,
+	Prefab3x9Cliff
 }
 
 class PointOfInterest
@@ -174,6 +178,10 @@ class DungeonBrush
 	Prefab@ m_pfb_6x12_pth;
 	Prefab@ m_pfb_6x8_pth;
 	Prefab@ m_pfb_8x4_pth;
+	Prefab@ m_pfb_3x3_clf;
+	Prefab@ m_pfb_9x3_clf;
+	Prefab@ m_pfb_3x9_clf;
+	
 	
 	int m_width;
 	int m_height;
@@ -248,6 +256,9 @@ class DungeonBrush
 		@m_pfb_6x12_pth= Resources::GetPrefab("prefabs/" + theme + "/path_6x12.pfb");
 		@m_pfb_6x8_pth = Resources::GetPrefab("prefabs/" + theme + "/path_6x8.pfb");
 		@m_pfb_8x4_pth = Resources::GetPrefab("prefabs/" + theme + "/path_8x4.pfb");
+		@m_pfb_3x3_clf = Resources::GetPrefab("prefabs/" + theme + "/cliff_3x3.pfb");
+		@m_pfb_9x3_clf = Resources::GetPrefab("prefabs/" + theme + "/cliff_9x3.pfb");
+		@m_pfb_3x9_clf = Resources::GetPrefab("prefabs/" + theme + "/cliff_3x9.pfb");
 	}
 
 	BaseBrushTiles@ LoadBaseBrushTiles(string theme)
@@ -750,6 +761,13 @@ class DungeonBrush
 			return m_pfb_6x8_pth;
 		case PointOfInterestType::Prefab8x4Path:
 			return m_pfb_8x4_pth;
+			
+		case PointOfInterestType::Prefab3x3Cliff:
+			return m_pfb_3x3_clf;
+		case PointOfInterestType::Prefab9x3Cliff:
+			return m_pfb_9x3_clf;
+		case PointOfInterestType::Prefab3x9Cliff:
+			return m_pfb_3x9_clf;
 		}
 			
 		return null;

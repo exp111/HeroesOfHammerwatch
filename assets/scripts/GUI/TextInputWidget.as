@@ -19,6 +19,8 @@ class TextInputWidget : Widget
 
 	TextAlignment m_alignment = TextAlignment::Left;
 
+	vec4 m_color;
+
 	void Load(WidgetLoadingContext &ctx) override
 	{
 		LoadWidthHeight(ctx);
@@ -26,6 +28,8 @@ class TextInputWidget : Widget
 		string alignStr = ctx.GetString("align", false);
 		     if (alignStr == "right") m_alignment = TextAlignment::Right;
 		else if (alignStr == "center") m_alignment = TextAlignment::Center;
+
+		m_color = ctx.GetColorRGBA("color", false, vec4(1, 1, 1, 1));
 
 		@m_font = Resources::GetBitmapFont(ctx.GetString("font"));
 		m_text = ctx.GetString("text", false, "");
@@ -171,7 +175,9 @@ class TextInputWidget : Widget
 	{
 		if (m_font is null)
 			return;
+
 		@m_bitmapText = m_font.BuildText(EscapeString(m_text.plain()));
+		m_bitmapText.SetColor(m_color);
 	}
 
 	vec2 GetTextOffset()

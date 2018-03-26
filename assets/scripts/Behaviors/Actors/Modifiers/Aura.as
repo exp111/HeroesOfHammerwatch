@@ -37,8 +37,14 @@ namespace Modifiers
 					@targets = g_scene.FetchActorsWithOtherTeam(player.Team, xy(unit.GetPosition()), m_range);
 				
 				for (uint i = 0; i < targets.length(); i++)
-					if (targets[i] != unit)
-						cast<Actor>(targets[i].GetScriptBehavior()).ApplyBuff(ActorBuff(player, m_buff, 1.0f, false));
+				{
+					if (targets[i] == unit)
+						continue;
+
+					auto actor = cast<Actor>(targets[i].GetScriptBehavior());
+					if (actor.IsTargetable())
+						actor.ApplyBuff(ActorBuff(player, m_buff, 1.0f, false));
+				}
 			}
 		}
 	}

@@ -244,6 +244,7 @@ class Town : Campaign
 		player.potionChargesUsed = 0;
 		player.runGold = 0;
 		player.runOre = 0;
+		player.soulLinkedBy = -1;
 	}
 
 	string GetPlayerDisplayName(PlayerRecord@ record) override

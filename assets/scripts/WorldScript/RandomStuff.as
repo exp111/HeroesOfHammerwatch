@@ -249,10 +249,13 @@ namespace WorldScript
 
 		UsableIcon GetIcon(Player@ player)
 		{
+			if (!Enabled)
+				return UsableIcon::None;
+		
 			if (!CanUse(player))
-				return Cross;
+				return UsableIcon::Cross;
 
-			return Speech;
+			return UsableIcon::Speech;
 		}
 		
 		SValue@ Save()

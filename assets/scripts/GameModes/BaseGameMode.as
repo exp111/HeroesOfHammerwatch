@@ -173,6 +173,7 @@ class BaseGameMode : AGameMode
 		m_guiBuilder.AddWidgetProducer("systext", LoadSysTextWidget);
 		m_guiBuilder.AddWidgetProducer("sprite", LoadSpriteWidget);
 		m_guiBuilder.AddWidgetProducer("rect", LoadRectWidget);
+		m_guiBuilder.AddWidgetProducer("clip", LoadClipWidget);
 		m_guiBuilder.AddWidgetProducer("scrollrect", LoadScrollableRectWidget);
 		m_guiBuilder.AddWidgetProducer("flag", LoadFlagWidget);
 		m_guiBuilder.AddWidgetProducer("transform", LoadTransformWidget);
@@ -212,7 +213,7 @@ class BaseGameMode : AGameMode
 		AddVar("ui_txt_plr_ammo_max", Tweak::FloatingTextColor_PlayerAmmoMax);
 		AddVar("ui_txt_pickup", Tweak::FloatingTextColor_Pickup);
 
-		AddVar("ui_hide_fog", false, null);
+		AddVar("ui_hide_fog", false, null, cvar_flags::Cheat);
 
 		AddVar("ui_debug_handicap", false, CvarDebugHandicap);
 
@@ -221,7 +222,7 @@ class BaseGameMode : AGameMode
 
 		AddVar("debug_widgets", false, CvarDebugWidgets);
 		AddVar("inspect_widget", false, CvarInspectWidget);
-		AddVar("g_start_level", 0, null);
+		AddVar("g_start_level", 0, null, cvar_flags::Cheat);
 
 		AddVar("g_autoswitch_pickup", false);
 		AddVar("g_autoswitch_empty", true);
@@ -245,7 +246,7 @@ class BaseGameMode : AGameMode
 		AddVar("ui_player_measure", false);
 		AddVar("ui_cursor_unit", false);
 		AddVar("ui_cursor_alpha", 1.0);
-		AddVar("ui_chat_fade_time", 6000);
+		AddVar("ui_chat_fade_time", 7000);
 		AddVar("ui_chat_dialog", true);
 		AddVar("ui_chat_scale", 1.0);
 		AddVar("ui_chat_width", 0.35);
@@ -294,7 +295,7 @@ class BaseGameMode : AGameMode
 		@m_safeGore = LoadGore("effects/gibs/no_gore.sval");
 		
 
-		AddFunction("list_flags", ListFlagsCFunc);
+		AddFunction("list_flags", ListFlagsCFunc, cvar_flags::Cheat);
 	}
 
 	int GetPlayersAlive()
@@ -1287,7 +1288,6 @@ class BaseGameMode : AGameMode
 		builder.PushVector2("spawn-pos", g_spawnPos);
 		
 		int shortcut = 0;
-		int newGamePlus = 0;
 		int numPlrs = 0;
 		for (uint i = 0; i < g_players.length(); i++)
 		{
@@ -1296,10 +1296,10 @@ class BaseGameMode : AGameMode
 		
 			numPlrs++;
 			shortcut = max(shortcut, g_players[i].shortcut);
-			newGamePlus = max(newGamePlus, g_players[i].newGamePlus);
+			if (g_players[i].newGamePlus > g_ngp)
+				shortcut = 1000;
 		}
 		
-		builder.PushInteger("ngp", newGamePlus);
 		builder.PushInteger("num-plrs", numPlrs);
 		builder.PushInteger("shortcut", shortcut);
 		MusicManager::Save(builder);

@@ -18,6 +18,8 @@ class PassiveMovement : ActorMovement
 	{
 		if (!m_enabled)
 			return;
+		
+		ActorMovement::Update(dt, isCasting);
 			
 		if (!isCasting && m_behavior.m_target !is null)
 		{

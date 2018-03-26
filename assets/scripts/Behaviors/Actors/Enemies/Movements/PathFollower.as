@@ -16,7 +16,7 @@ class PathFollower
 	uint m_newPathfindTime;
 	
 	vec2 m_lastPos;
-	
+	float m_visualDir;
 	
 	void Initialize(UnitPtr unit, int maxRange, bool flying)
 	{
@@ -42,10 +42,14 @@ class PathFollower
 	
 	vec2 FollowPath(vec2 from, vec2 to)
 	{
+		if (lengthsq(to - from) <= 2 * 2)
+			return vec2();
+	
 		if (m_flying)
 		{
 			auto dir = normalize(to - from);
 			dir = normalize(dir + m_flyingDir * 0.33);
+			m_visualDir = atan(dir.y, dir.x);
 			return dir;
 		}
 	
@@ -86,7 +90,9 @@ class PathFollower
 				dir = m_path[m_currNode] - from;
 			else
 				dir = to - from;
-				
+			
+			m_visualDir = atan(dir.y, dir.x);
+			
 			float l = length(dir);
 			if (l > 0)
 			{
@@ -99,16 +105,16 @@ class PathFollower
 					
 					auto d1 = vec2(cos(ang + da), sin(ang + da));
 					auto d2 = vec2(cos(ang - da), sin(ang - da));
-					
+
 					bool b1 = g_scene.RaycastQuick(from, from + d1 * m_unitRadius * 2, ~0, RaycastType::Any);
 					bool b2 = g_scene.RaycastQuick(from, from + d2 * m_unitRadius * 2, ~0, RaycastType::Any);
 					
 					if (b1 != b2)
 					{
 						if (b1)
-							return d2;
+							return d1;
 							
-						return d1;
+						return d2;
 					}
 				}
 			

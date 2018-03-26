@@ -46,6 +46,9 @@ class TownRecord
 
 	pint m_reputationPresented;
 
+	pint m_currentNgp;
+	pint m_highestNgp;
+
 	array<uint> m_bossesKilled;
 
 	array<string> m_townFlags;
@@ -242,8 +245,14 @@ class TownRecord
 
 	void Save(SValueBuilder& builder, bool saveFlags)
 	{
+		if (Network::IsServer())
+			m_currentNgp = g_ngp;
+
 		builder.PushInteger("gold", m_gold);
 		builder.PushInteger("ore", m_ore);
+
+		builder.PushInteger("current-ngp", m_currentNgp);
+		builder.PushInteger("highest-ngp", m_highestNgp);
 
 		builder.PushInteger("reputation-presented", m_reputationPresented);
 
@@ -324,6 +333,28 @@ class TownRecord
 	
 		m_gold = GetParamInt(UnitPtr(), sv, "gold");
 		m_ore = GetParamInt(UnitPtr(), sv, "ore");
+
+		m_currentNgp = GetParamInt(UnitPtr(), sv, "current-ngp", false, -1);
+		m_highestNgp = GetParamInt(UnitPtr(), sv, "highest-ngp", false, -1);
+		if (m_highestNgp == -1)
+		{
+			m_highestNgp = 0;
+
+			auto chars = GetCharacters();
+			for (uint i = 0; i < chars.length(); i++)
+			{
+				int ngp = GetParamInt(UnitPtr(), chars[i], "new-game-plus", false);
+				if (ngp > m_highestNgp)
+					m_highestNgp = ngp;
+			}
+
+			print("Setting initial town NGP: " + m_highestNgp);
+		}
+
+		if (m_currentNgp > m_highestNgp)
+			m_currentNgp = m_highestNgp;
+		if (m_currentNgp == -1)
+			m_currentNgp = m_highestNgp;
 
 		m_reputationPresented = GetParamInt(UnitPtr(), sv, "reputation-presented", false);
 

@@ -79,6 +79,8 @@ class FleeMovement : MeleeMovement
 		if (!m_enabled)
 			return;
 			
+		ActorMovement::Update(dt, isCasting);
+			
 		if (!Network::IsServer())
 		{
 			ClientUpdate(dt, isCasting, m_unit.GetMoveDir());

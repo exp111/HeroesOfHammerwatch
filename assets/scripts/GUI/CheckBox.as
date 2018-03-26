@@ -252,7 +252,7 @@ class CheckBoxWidget : ICheckableWidget, Widget
 			if (!m_enabled)
 				textColor = vec4(0.25, 0.25, 0.25, 1);
 			m_text.SetColor(textColor);
-			sb.DrawString(pos + vec2(textOffset, 1), m_text);
+			sb.DrawString(pos + vec2(textOffset, -1), m_text);
 		}
 	}
 }

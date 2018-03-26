@@ -8,7 +8,8 @@ enum Pattern
 	NotWall		= 6,
 	Walkable	= 7,
 	NotWalkable	= 8,
-	Anything	= 9
+	Cliff		= 9,
+	Anything	= 10
 }
 
 enum PatternCommand
@@ -17,6 +18,7 @@ enum PatternCommand
 	Reserve,
 	ReserveWall,
 	ReservedWall,
+	ReserveCliff,
 	Wall,
 	Floor,
 }
@@ -33,7 +35,7 @@ class PatternMatcher
 				{Pattern::Walkable, Pattern::Wall}
 			};
 
-			auto diags = FindAllPatterns(brush, ptrn);			
+			auto diags = FindAllPatterns(brush, ptrn);
 		
 			for (uint i = 0; i < diags.length(); i++)
 				brush.SetCell(diags[i].x, diags[i].y, Cell::Floor);
@@ -79,7 +81,90 @@ class PatternMatcher
 		}
 		%PROFILE_STOP
 	}
-	
+	/*
+	void RemovePits(DungeonBrush@ brush)
+	{
+		%PROFILE_START RemovePits
+		
+		{
+			array<array<Pattern>> ptrn = {
+				{Pattern::NotWalkable, Pattern::NotWalkable},
+				{Pattern::NotWalkable, Pattern::Walkable},
+				{Pattern::NotWalkable, Pattern::NotWalkable}
+			};
+
+			auto pits = FindAllPatterns(brush, ptrn);
+			print("Pits found: " + pits.length());
+		
+			for (uint i = 0; i < pits.length(); i++)
+			{
+				auto pit = pits[i];
+				
+				for (int j = 2; j < 5; j++)
+				{
+					if (brush.IsConsumed(pit.x + 1, pit.y + j))
+						{ print("Consumed!"); break; }
+						
+					if (!brush.IsOpen(pit.x + 2, pit.y + j))
+						{ print("Not open!"); break; }
+						
+					brush.SetCell(pit.x + 1, pit.y + j, Cell::Floor);
+				}
+				
+				for (int j = 0; j >= -3; j--)
+				{
+					if (brush.IsConsumed(pit.x + 1, pit.y + j))
+						{ print("Consumed!"); break; }
+						
+					if (!brush.IsOpen(pit.x + 2, pit.y + j))
+						{ print("Not open!"); break; }
+						
+					brush.SetCell(pit.x + 1, pit.y + j, Cell::Floor);
+				}
+			}
+		}
+
+		{
+			array<array<Pattern>> ptrn = {
+				{Pattern::NotWalkable, Pattern::NotWalkable},
+				{Pattern::Walkable, Pattern::NotWalkable},
+				{Pattern::NotWalkable, Pattern::NotWalkable}
+			};
+
+			auto pits = FindAllPatterns(brush, ptrn);
+			print("Pits found: " + pits.length());
+		
+			for (uint i = 0; i < pits.length(); i++)
+			{
+				auto pit = pits[i];
+				
+				for (int j = 2; j < 5; j++)
+				{
+					if (brush.IsConsumed(pit.x, pit.y + j))
+					{ print("Consumed!"); break; }
+						
+					if (!brush.IsOpen(pit.x -1, pit.y + j))
+					{ print("Not open!"); break; }
+						
+					brush.SetCell(pit.x, pit.y + j, Cell::Floor);
+				}
+				
+				for (int j = 0; j >= -3; j--)
+				{
+					if (brush.IsConsumed(pit.x, pit.y + j))
+					{ print("Consumed!"); break; }
+						
+					if (!brush.IsOpen(pit.x -1, pit.y + j))
+					{ print("Not open!"); break; }
+						
+					brush.SetCell(pit.x, pit.y + j, Cell::Floor);
+				}
+			}
+		}
+		
+		%PROFILE_STOP
+	}
+	*/
 	array<ivec2> ReservePrefabs(DungeonBrush@ brush, array<array<Pattern>>@ pattern, array<array<PatternCommand>>@ commands, int count)
 	{
 		int pHeight = commands.length();
@@ -115,6 +200,10 @@ class PatternMatcher
 						break;
 					case PatternCommand::ReserveWall:
 						brush.SetCell(pos.x + x, pos.y + y, Cell::Wall);
+						brush.SetConsumed(pos.x + x, pos.y + y);
+						break;
+					case PatternCommand::ReserveCliff:
+						brush.SetCell(pos.x + x, pos.y + y, Cell::Cliff);
 						brush.SetConsumed(pos.x + x, pos.y + y);
 						break;
 					case PatternCommand::Wall:

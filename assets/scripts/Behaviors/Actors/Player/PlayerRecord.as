@@ -88,7 +88,7 @@ class PlayerRecord
 	int potionChargesUsed;
 
 	array<OwnedUpgrade@> upgrades;
-	array<pint> levelSkills = { 1, 1, 0, 0, 0, 0, 0 };
+	array<pint> levelSkills;
 	array<pint> keys = { 0, 0, 0, 0, 0 };
 
 	int generalStoreItemsSaved = -1;
@@ -143,6 +143,8 @@ class PlayerRecord
 		mana = 1.0;
 		handicap = 0.8;
 
+		ResetLevelSkills();
+
 		@statistics = Stats::LoadList("tweak/stats.sval");
 		@statisticsSession = Stats::LoadList("tweak/stats.sval");
 
@@ -164,6 +166,21 @@ class PlayerRecord
 		modifiersUpgrades.m_name = Resources::GetString(".modifier.list.player.upgrades");
 		modifiersBuffs.m_name = Resources::GetString(".modifier.list.player.buffs");
 		modifiersTitles.m_name = Resources::GetString(".modifier.list.player.titles");
+	}
+
+	void ResetLevelSkills()
+	{
+		levelSkills = { 1, 1, 0, 0, 0, 0, 0 };
+	}
+
+	void ClearSkillUpgrades()
+	{
+		ResetLevelSkills();
+		for (int i = int(upgrades.length() - 1); i >= 0; i--)
+		{
+			if (cast<Upgrades::RecordUpgradeStep>(upgrades[i].m_step) !is null)
+				upgrades.removeAt(i);
+		}
 	}
 
 	uint GetCharFlags()
