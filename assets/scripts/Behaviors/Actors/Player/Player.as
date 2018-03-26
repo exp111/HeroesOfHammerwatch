@@ -1479,7 +1479,7 @@ void setLevelCFunc(cvar_t@ arg0)
 void HelpCFunc()
 {
 	print("CVars:");
-	print("noclip, god, clientfollowshost, show_all_accomplishments, unlimited_potions, xp_scale, player_speed, player_speed_max, no_confusion, level_up_refill");
+	print("noclip, god, clientfollowshost, show_all_accomplishments, unlimited_potions, xp_scale, player_speed, player_speed_max, no_confusion, level_up_refill, refund_scale");
 	print("always_gold -- Get always gold while gambling");
 
 	print("Functions:");
