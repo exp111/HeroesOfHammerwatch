@@ -50,48 +50,69 @@ class Player : PlayerBase, IPreRenderable
 		//TODO: Replace check with something so that on splitscreen, only the first player can use cheats
 		//if (Network::IsServer())
 		{
-			AddVar("noclip", false, SetNoClipCVar, cvar_flags::Cheat);
-			AddVar("god", false, SetGodmodeCVar, cvar_flags::Cheat);
-			AddVar("clientfollowshost", false, null, cvar_flags::Cheat);
-			AddVar("show_all_accomplishments", false, null, cvar_flags::Cheat);
+			AddVar("noclip", false, SetNoClipCVar);
+			AddVar("god", false, SetGodmodeCVar);
+			AddVar("clientfollowshost", false, null);
+			AddVar("show_all_accomplishments", false, null);
+
+			AddVar("always_gold", false, alwaysGoldCVar);
+			AddVar("unlimited_potions", false, unlimitedChargesCVar);
+			AddVar("xp_scale", 1.0f, SetXPScaleCVar);
+			AddVar("player_speed", 2.4f, setPlayerSpeedCVar);
+			AddVar("player_speed_max", 5.0f, setPlayerSpeedMaxCVar);
+			AddVar("no_confusion", false, noConfusionCVar);
+			AddVar("level_up_refill", false, levelUpRefillCVar);
+			AddVar("refund_scale", 0.9f, refundScaleCVar);
+
+			AddFunction("exp_help", HelpCFunc);
+
+			{
+				array<cvar_type> cfuncParams = { cvar_type::Bool };
+				AddFunction("set_lobby_joinable", cfuncParams, setLobbyJoinableCFunc);
+			}
 
 			{
 				array<cvar_type> cfuncParams = { cvar_type::String };
-				AddFunction("give_item", cfuncParams, GiveItemCFunc, cvar_flags::Cheat);
-				AddFunction("give_perk", cfuncParams, GivePerkCFunc, cvar_flags::Cheat);
+				AddFunction("give_item", cfuncParams, GiveItemCFunc);
+				AddFunction("give_perk", cfuncParams, GivePerkCFunc);
+
+				AddFunction("unlock_achievement", cfuncParams, UnlockAchievementCFunc);
+				AddFunction("set_level", cfuncParams, setLevelCFunc);
 			}
 			
 			{
 				array<cvar_type> cfuncParams = { cvar_type::Int, cvar_type::Int, cvar_type::Int, cvar_type::Int };
-				AddFunction("give_items", cfuncParams, GiveItemsCFunc, cvar_flags::Cheat);
+				AddFunction("give_items", cfuncParams, GiveItemsCFunc);
 			}
 
-			AddFunction("clear_items", ClearItemsCfunc, cvar_flags::Cheat);
+			AddFunction("clear_items", ClearItemsCfunc);
 			
 			{
 				array<cvar_type> cfuncParams = { cvar_type::Int };
-				AddFunction("give_experience", cfuncParams, GiveExperienceCFunc, cvar_flags::Cheat);
-				AddFunction("give_health", cfuncParams, GiveHealthCFunc, cvar_flags::Cheat);
-				AddFunction("give_mana", cfuncParams, GiveManaCFunc, cvar_flags::Cheat);
-				AddFunction("give_armor", cfuncParams, GiveArmorCFunc, cvar_flags::Cheat);
-				AddFunction("give_key", cfuncParams, GiveKeyCFunc, cvar_flags::Cheat);
-				AddFunction("levelup", cfuncParams, LevelupCFunc, cvar_flags::Cheat);
+				AddFunction("give_experience", cfuncParams, GiveExperienceCFunc);
+				AddFunction("give_health", cfuncParams, GiveHealthCFunc);
+				AddFunction("give_mana", cfuncParams, GiveManaCFunc);
+				AddFunction("give_armor", cfuncParams, GiveArmorCFunc);
+				AddFunction("give_key", cfuncParams, GiveKeyCFunc);
+				AddFunction("levelup", cfuncParams, LevelupCFunc);
 
-				AddFunction("give_gold", cfuncParams, GiveGoldCFunc, cvar_flags::Cheat);
-				AddFunction("give_ore", cfuncParams, GiveOreCFunc, cvar_flags::Cheat);
-				AddFunction("give_skillpoints", cfuncParams, GiveSkillpointsCFunc, cvar_flags::Cheat);
+				AddFunction("give_gold", cfuncParams, GiveGoldCFunc);
+				AddFunction("give_ore", cfuncParams, GiveOreCFunc);
+				AddFunction("give_skillpoints", cfuncParams, GiveSkillpointsCFunc);
+
+				AddFunction("change_stage", cfuncParams, ChangeLvlCFunc);
 			}
 			
 			{
 				array<cvar_type> cfuncParams = { cvar_type::String, cvar_type::Bool, cvar_type::Bool };
-				AddFunction("set_flag", cfuncParams, SetFlagCFunc, cvar_flags::Cheat);
+				AddFunction("set_flag", cfuncParams, SetFlagCFunc);
 			}
 
 			AddFunction("kill", KillCFunc);
-			AddFunction("killall", KillAllCFunc, cvar_flags::Cheat);
-			AddFunction("revive", ReviveCFunc, cvar_flags::Cheat);
+			AddFunction("killall", KillAllCFunc);
+			AddFunction("revive", ReviveCFunc);
 			
-			AddFunction("listenemies", ListEnemiesCFunc, cvar_flags::Cheat);
+			AddFunction("listenemies", ListEnemiesCFunc);
 
 			AddFunction("listmodifiers", ListModifiersCFunc);
 		}
@@ -239,7 +260,7 @@ class Player : PlayerBase, IPreRenderable
 			{
 				ivec2 stats = g_allModifiers.StatsAdd(this);
 				float maxHealth = m_record.MaxHealth() + stats.x;
-				int stealHealth = roll_round(di.Damage * ls);
+				int stealHealth = int(di.Damage * ls);
 				if (m_record.hp * maxHealth + stealHealth > maxHealth)
 					stealHealth = int(maxHealth - m_record.hp * maxHealth);
 				m_record.hp = min(1.f, m_record.hp + stealHealth / maxHealth);
@@ -653,6 +674,10 @@ class Player : PlayerBase, IPreRenderable
 
 		m_record.hp = 1.0;
 		m_record.mana = 1.0;
+		if (Tweak::levelUpRefill == true)
+		{
+			m_record.potionChargesUsed = 0;
+		}
 
 		Stats::Add("levels-gained", levels, m_record);
 		Stats::Add("avg-levels-gained", levels, m_record);
@@ -825,7 +850,7 @@ class Player : PlayerBase, IPreRenderable
 		
 		auto aimDir = input.AimDir;
 		auto moveDir = input.MoveDir;
-		if (confused)
+		if (confused && Tweak::noConfusion != true)
 		{
 			aimDir *= -1;
 			moveDir *= -1;
@@ -971,9 +996,12 @@ class Player : PlayerBase, IPreRenderable
 				float manaAmnt = 50 * g_allModifiers.PotionManaMul(this);
 				int charges = 1 + g_allModifiers.PotionCharges();
 
-				if (charges > m_record.potionChargesUsed)
+				if (Tweak::unlimitedCharges == true || charges > m_record.potionChargesUsed)
 				{
-					m_record.potionChargesUsed++;
+					if (Tweak::unlimitedCharges != true)
+					{
+						m_record.potionChargesUsed++;
+					}
 					this.Damage(DamageInfo(0, this, int(healAmnt + 0.5f), false, true, 0), xy(m_unit.GetPosition()), moveDir);
 
 					this.GiveMana(int(manaAmnt + 0.5f));
@@ -1255,6 +1283,31 @@ void LevelupCFunc(cvar_t@ arg0)
 	}
 }
 
+void SetXPScaleCVar(float val)
+{
+	Tweak::ExperienceScale = val;
+}
+
+void alwaysGoldCVar(bool val)
+{		
+	Tweak::getAlwaysGold = val;
+}
+
+void unlimitedChargesCVar(bool val)
+{		
+	Tweak::unlimitedCharges = val;
+}
+
+void setPlayerSpeedCVar(float val)
+{
+	Tweak::PlayerSpeed = val;
+}
+
+void setPlayerSpeedMaxCVar(float val)
+{
+	Tweak::PlayerSpeedMax = val;
+}
+
 void KillCFunc()
 {
 	auto ply = GetLocalPlayer();
@@ -1337,4 +1390,103 @@ void GiveSkillpointsCFunc(cvar_t@ arg0)
 {
 	int amount = arg0.GetInt();
 	GetLocalPlayerRecord().skillPoints += amount;
+}
+
+void refundScaleCVar(float val)
+{
+	Tweak::PerkRefundScale = val;
+}
+
+void RefundPerksCFunc()
+{
+	
+}
+
+void ChangeLvlCFunc(cvar_t@ arg0)
+{
+	if (Network::IsServer())
+	{
+		auto gm = cast<Campaign>(g_gameMode);
+			gm.m_levelCount+= arg0.GetInt();
+			gm.m_minimap.Clear();
+			
+			ivec3 lvl = CalcLevel(gm.m_levelCount);
+			
+			if (lvl.y == 3)
+			{
+				if (lvl.x == 0)
+				{
+					ChangeLevel("levels/boss_mines.lvl");
+					return;
+				}
+				else if (lvl.x == 1)
+				{
+					ChangeLevel("levels/boss_prison.lvl");
+					return;
+				}
+				else if (lvl.x == 2)
+				{
+					ChangeLevel("levels/boss_armory.lvl");
+					return;
+				}
+				else if (lvl.x == 3)
+				{
+					ChangeLevel("levels/boss_archives.lvl");
+					return;
+				}
+				else if (lvl.x == 4)
+				{
+					ChangeLevel("levels/boss_chambers.lvl");
+					return;
+				}
+			}
+		
+			ChangeLevel("levels/generated.lvl");
+	}
+}
+
+void UnlockAchievementCFunc(cvar_t@ arg0)
+{
+	Platform::Service.UnlockAchievement(arg0.GetString());
+}
+
+void noConfusionCVar(bool val)
+{
+	Tweak::noConfusion = val;
+}
+
+void levelUpRefillCVar(bool val)
+{
+	Tweak::levelUpRefill = val;
+}
+
+void setLobbyJoinableCFunc(cvar_t@ arg0)
+{
+	if (Network::IsServer())
+	{
+		Lobby::SetJoinable(arg0.GetBool());
+	}
+}
+
+void setLevelCFunc(cvar_t@ arg0)
+{
+	if (Network::IsServer())
+	{
+		ChangeLevel("levels/" + arg0.GetString() + ".lvl");
+	}
+}
+
+void HelpCFunc()
+{
+	print("CVars:");
+	print("noclip, god, clientfollowshost, show_all_accomplishments, unlimited_potions, xp_scale, player_speed, player_speed_max, no_confusion, level_up_refill");
+	print("always_gold -- Get always gold while gambling");
+
+	print("Functions:");
+	print("give_item <itemString>, give_perk <perkString>, unlock_achievement <achievementString>");
+	print("give_items <int,int,int,int> -- how many items per rarity ex: 0 1 0 0 gives 1 uncommon item");	
+	print("clear_items, give_experience, give_health, give_mana, give_armor, give_key, levelup, give_gold, give_ore, give_skillpoints, change_stage");
+	print("kill, killall, revive, listenemies, listmodifiers, set_lobby_joinable, set_level");
+	print("levels: bonus, boss_archives, boss_armory, boss_chambers, boss_dragon, boss_mines, boss_prison, challenge_1, challenge_2, gambling, generated, menu, missing, myrtest,");
+	print("ozzitest, ozzitest2, ozzitest3, ozzitest4, scratch_boss_test, scratchtest, screenshot, test, test_adam, test_multi, themetest, town, town_outlook, town_outlook_jocke, town_outlook_props");
 }

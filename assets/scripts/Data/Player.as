@@ -3,14 +3,14 @@ namespace Tweak
 	const int HealAddPerLevel = 100000;
 	const int BaseArmor = 50;
 
-	const float PlayerSpeed = 2.4f;
-	const float PlayerSpeedMax = 5.0f;
+	float PlayerSpeed = 2.4f;
+	float PlayerSpeedMax = 5.0f;
 	const int DashChargeTime = 1500;
 	const int MaxDashes = 8;
 	const int DashSpeed = 12;
 	const int DashDuration = 120;
 
-	const float PerkRefundScale = 0.9f;
+	float PerkRefundScale = 0.9f;
 	const float HealScalePerLevel = 1.0f;
 
 	const int ExtraLives = 0;
