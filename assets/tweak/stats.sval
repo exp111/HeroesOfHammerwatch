@@ -1,0 +1,1716 @@
+<array>
+	%// Achievements
+	<dict>
+		<string name="category">0achievements</string>
+		<string name="name">max-level-paladin</string>
+		<string name="scope">town</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">5</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">10</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">15</int>
+				<int name="reputation">7500</int>
+			</dict>
+			<dict>
+				<int name="value">20</int>
+				<int name="reputation">15000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">0achievements</string>
+		<string name="name">max-level-ranger</string>
+		<string name="scope">town</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">5</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">10</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">15</int>
+				<int name="reputation">7500</int>
+			</dict>
+			<dict>
+				<int name="value">20</int>
+				<int name="reputation">15000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">0achievements</string>
+		<string name="name">max-level-sorcerer</string>
+		<string name="scope">town</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">5</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">10</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">15</int>
+				<int name="reputation">7500</int>
+			</dict>
+			<dict>
+				<int name="value">20</int>
+				<int name="reputation">15000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">0achievements</string>
+		<string name="name">max-level-warlock</string>
+		<string name="scope">town</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">5</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">10</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">15</int>
+				<int name="reputation">7500</int>
+			</dict>
+			<dict>
+				<int name="value">20</int>
+				<int name="reputation">15000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">0achievements</string>
+		<string name="name">max-level-priest</string>
+		<string name="scope">town</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">5</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">10</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">15</int>
+				<int name="reputation">7500</int>
+			</dict>
+			<dict>
+				<int name="value">20</int>
+				<int name="reputation">15000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">0achievements</string>
+		<string name="name">max-level-thief</string>
+		<string name="scope">town</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">5</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">10</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">15</int>
+				<int name="reputation">7500</int>
+			</dict>
+			<dict>
+				<int name="value">20</int>
+				<int name="reputation">15000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">0achievements</string>
+		<string name="name">max-level-wizard</string>
+		<string name="scope">town</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">5</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">10</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">15</int>
+				<int name="reputation">7500</int>
+			</dict>
+			<dict>
+				<int name="value">20</int>
+				<int name="reputation">15000</int>
+			</dict>
+		</array>
+	</dict>
+	
+	<dict>
+		<string name="category">0achievements</string>
+		<string name="name">boss-1-killed</string>
+	</dict>
+
+	<dict>
+		<string name="category">0achievements</string>
+		<string name="name">boss-2-killed</string>
+	</dict>
+
+	<dict>
+		<string name="category">0achievements</string>
+		<string name="name">boss-3-killed</string>
+	</dict>
+
+	<dict>
+		<string name="category">0achievements</string>
+		<string name="name">boss-4-killed</string>
+	</dict>
+
+	<dict>
+		<string name="category">0achievements</string>
+		<string name="name">boss-5-killed</string>
+	</dict>
+
+	<dict>
+		<string name="category">0achievements</string>
+		<string name="name">boss-1-killed-class</string>
+		<string name="scope">town</string>
+		<string name="display">none</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">1</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">3</int>
+				<int name="reputation">1250</int>
+			</dict>
+			<dict>
+				<int name="value">5</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">7</int>
+				<int name="reputation">7500</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">0achievements</string>
+		<string name="name">boss-2-killed-class</string>
+		<string name="scope">town</string>
+		<string name="display">none</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">1</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">3</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">5</int>
+				<int name="reputation">5000</int>
+			</dict>
+			<dict>
+				<int name="value">7</int>
+				<int name="reputation">12500</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">0achievements</string>
+		<string name="name">boss-3-killed-class</string>
+		<string name="scope">town</string>
+		<string name="display">none</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">1</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">3</int>
+				<int name="reputation">5000</int>
+			</dict>
+			<dict>
+				<int name="value">5</int>
+				<int name="reputation">10000</int>
+			</dict>
+			<dict>
+				<int name="value">7</int>
+				<int name="reputation">20000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">0achievements</string>
+		<string name="name">boss-4-killed-class</string>
+		<string name="scope">town</string>
+		<string name="display">none</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">1</int>
+				<int name="reputation">5000</int>
+			</dict>
+			<dict>
+				<int name="value">3</int>
+				<int name="reputation">7500</int>
+			</dict>
+			<dict>
+				<int name="value">5</int>
+				<int name="reputation">15000</int>
+			</dict>
+			<dict>
+				<int name="value">7</int>
+				<int name="reputation">30000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">0achievements</string>
+		<string name="name">boss-5-killed-class</string>
+		<string name="scope">town</string>
+		<string name="display">none</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">1</int>
+				<int name="reputation">10000</int>
+			</dict>
+			<dict>
+				<int name="value">3</int>
+				<int name="reputation">15000</int>
+			</dict>
+			<dict>
+				<int name="value">5</int>
+				<int name="reputation">30000</int>
+			</dict>
+			<dict>
+				<int name="value">7</int>
+				<int name="reputation">50000</int>
+			</dict>
+		</array>
+	</dict>
+
+	%// Combat
+	<dict>
+		<string name="category">1combat</string>
+		<string name="name">enemies-killed</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">5000</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">25000</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">50000</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">250000</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">1000000</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+	
+	<dict>
+		<string name="category">1combat</string>
+		<string name="name">aberration-killed</string>
+		
+		<string name="achievement">kill_aberrations</string>
+		<int name="achievement-limit">75000</int>
+		
+		<array name="rewards">
+			<dict>
+				<int name="value">2000</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">7500</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">20000</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">75000</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">350000</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">1combat</string>
+		<string name="name">beast-killed</string>
+		
+		<string name="achievement">kill_beasts</string>
+		<int name="achievement-limit">50000</int>
+		
+		<array name="rewards">
+			<dict>
+				<int name="value">1000</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">5000</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">15000</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">50000</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">250000</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">1combat</string>
+		<string name="name">construct-killed</string>
+		
+		<string name="achievement">kill_constructs</string>
+		<int name="achievement-limit">10000</int>
+		
+		<array name="rewards">
+			<dict>
+				<int name="value">250</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">1000</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">2500</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">12500</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">50000</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">1combat</string>
+		<string name="name">undead-killed</string>
+		
+		<string name="achievement">kill_undead</string>
+		<int name="achievement-limit">100000</int>
+		
+		<array name="rewards">
+			<dict>
+				<int name="value">2500</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">12500</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">25000</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">125000</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">500000</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">1combat</string>
+		<string name="name">damage-dealt</string>
+	</dict>
+
+	<dict>
+		<string name="category">1combat</string>
+		<string name="name">damage-dealt-physical</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">100000</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">500000</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">2000000</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">5000000</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">10000000</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">1combat</string>
+		<string name="name">damage-dealt-magical</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">100000</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">500000</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">2000000</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">5000000</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">10000000</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+	
+	<dict>
+		<string name="category">1combat</string>
+		<string name="name">damage-dealt-max</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">100</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">200</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">500</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">1000</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">1500</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">1combat</string>
+		<string name="name">damage-taken</string>
+	</dict>
+
+	<dict>
+		<string name="category">1combat</string>
+		<string name="name">damage-taken-max</string>
+	</dict>
+
+	<dict>
+		<string name="category">1combat</string>
+		<string name="name">damage-blocked</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">1000</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">5000</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">25000</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">100000</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">500000</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">1combat</string>
+		<string name="name">damage-returned</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">1000</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">5000</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">25000</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">100000</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">500000</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+	
+	<dict>
+		<string name="category">1combat</string>
+		<string name="name">spent-mana</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">10000</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">50000</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">250000</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">1000000</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">5000000</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+	
+	<dict>
+		<string name="category">1combat</string>
+		<string name="name">best-combo</string>
+		
+		<string name="achievement">combo_killer</string>
+		<int name="achievement-limit">500</int>
+		
+		<array name="rewards">
+			<dict>
+				<int name="value">50</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">100</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">250</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">500</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">1000</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+	
+	<dict>
+		<string name="category">1combat</string>
+		<string name="name">crit-count</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">500</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">2500</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">10000</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">50000</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">200000</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+	
+	<dict>
+		<string name="category">1combat</string>
+		<string name="name">stun-count</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">500</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">2500</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">10000</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">50000</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">200000</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">1combat</string>
+		<string name="name">lifesteal-amount</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">500</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">2500</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">10000</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">50000</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">100000</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+
+
+	<dict>
+		<string name="category">1combat</string>
+		<string name="name">evade-amount</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">250</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">1000</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">5000</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">25000</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">100000</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+	
+	%// Vitality
+	<dict>
+		<string name="category">2vitality</string>
+		<string name="name">death-count</string>
+	</dict>
+	
+	<dict>
+		<string name="category">2vitality</string>
+		<string name="name">potion-charges-used</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">50</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">250</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">1000</int>
+				<int name="reputation">5000</int>
+			</dict>
+		</array>
+	</dict>
+	
+	<dict>
+		<string name="category">2vitality</string>
+		<string name="name">well-used</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">25</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">100</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">500</int>
+				<int name="reputation">5000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">2vitality</string>
+		<string name="name">amount-healed</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">10000</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">100000</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">500000</int>
+				<int name="reputation">5000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">2vitality</string>
+		<string name="name">amount-healed-pickups</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">1000</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">10000</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">100000</int>
+				<int name="reputation">5000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">2vitality</string>
+		<string name="display">none</string>
+		<string name="name">floor-deaths-1</string>
+	</dict>
+
+	<dict>
+		<string name="category">2vitality</string>
+		<string name="display">none</string>
+		<string name="name">floor-deaths-2</string>
+	</dict>
+
+	<dict>
+		<string name="category">2vitality</string>
+		<string name="display">none</string>
+		<string name="name">floor-deaths-3</string>
+	</dict>
+
+	<dict>
+		<string name="category">2vitality</string>
+		<string name="display">none</string>
+		<string name="name">floor-deaths-4</string>
+	</dict>
+
+	<dict>
+		<string name="category">2vitality</string>
+		<string name="display">none</string>
+		<string name="name">floor-deaths-5</string>
+	</dict>
+
+	<dict>
+		<string name="category">2vitality</string>
+		<string name="display">none</string>
+		<string name="name">floor-deaths-6</string>
+	</dict>
+
+	<dict>
+		<string name="category">2vitality</string>
+		<string name="display">none</string>
+		<string name="name">floor-deaths-7</string>
+	</dict>
+
+	<dict>
+		<string name="category">2vitality</string>
+		<string name="display">none</string>
+		<string name="name">floor-deaths-8</string>
+	</dict>
+
+	<dict>
+		<string name="category">2vitality</string>
+		<string name="display">none</string>
+		<string name="name">floor-deaths-9</string>
+	</dict>
+
+	<dict>
+		<string name="category">2vitality</string>
+		<string name="display">none</string>
+		<string name="name">floor-deaths-10</string>
+	</dict>
+
+	<dict>
+		<string name="category">2vitality</string>
+		<string name="display">none</string>
+		<string name="name">floor-deaths-11</string>
+	</dict>
+
+	<dict>
+		<string name="category">2vitality</string>
+		<string name="display">none</string>
+		<string name="name">floor-deaths-12</string>
+	</dict>
+
+	<dict>
+		<string name="category">2vitality</string>
+		<string name="display">none</string>
+		<string name="name">floor-deaths-13</string>
+	</dict>
+
+	<dict>
+		<string name="category">2vitality</string>
+		<string name="display">none</string>
+		<string name="name">floor-deaths-14</string>
+	</dict>
+
+	<dict>
+		<string name="category">2vitality</string>
+		<string name="display">none</string>
+		<string name="name">floor-deaths-15</string>
+	</dict>
+	
+	%// Adventuring
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="display">none</string>
+		<string name="name">total-runs</string>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="display">time</string>
+		<string name="name">time-played</string>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="display">none</string>
+		<string name="type">average</string>
+		<string name="name">time-played-run</string>
+	</dict>
+	
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="name">floors-visited</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">50</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">250</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">1000</int>
+				<int name="reputation">5000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="display">distance</string>
+		<string name="name">units-traveled</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">500000</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">5000000</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">10000000</int>
+				<int name="reputation">5000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="display">none</string>
+		<string name="name">exp-gained</string>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="display">none</string>
+		<string name="type">average</string>
+		<string name="name">avg-exp-gained</string>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="display">none</string>
+		<string name="name">levels-gained</string>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="display">none</string>
+		<string name="type">average</string>
+		<string name="name">avg-levels-gained</string>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="name">spent-skillpoints</string>
+	</dict>
+	
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="name">gold-found</string>
+		
+		<string name="achievement">find_gold</string>
+		<int name="achievement-limit">1000000</int>
+		
+		<array name="rewards">
+			<dict>
+				<int name="value">50000</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">250000</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">1000000</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">5000000</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">10000000</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="display">none</string>
+		<string name="type">average</string>
+		<string name="name">avg-gold-found</string>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="display">none</string>
+		<string name="type">average</string>
+		<string name="name">avg-gold-found-act-1</string>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="display">none</string>
+		<string name="type">average</string>
+		<string name="name">avg-gold-found-act-2</string>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="display">none</string>
+		<string name="type">average</string>
+		<string name="name">avg-gold-found-act-3</string>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="display">none</string>
+		<string name="type">average</string>
+		<string name="name">avg-gold-found-act-4</string>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="display">none</string>
+		<string name="type">average</string>
+		<string name="name">avg-gold-found-act-5</string>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="name">ore-found</string>
+		
+		<string name="achievement">find_ore</string>
+		<int name="achievement-limit">1000</int>
+		
+		<array name="rewards">
+			<dict>
+				<int name="value">50</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">250</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">1000</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">2500</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">10000</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="display">none</string>
+		<string name="type">average</string>
+		<string name="name">avg-ore-found</string>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="display">none</string>
+		<string name="type">average</string>
+		<string name="name">avg-ore-found-act-1</string>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="display">none</string>
+		<string name="type">average</string>
+		<string name="name">avg-ore-found-act-2</string>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="display">none</string>
+		<string name="type">average</string>
+		<string name="name">avg-ore-found-act-3</string>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="display">none</string>
+		<string name="type">average</string>
+		<string name="name">avg-ore-found-act-4</string>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="display">none</string>
+		<string name="type">average</string>
+		<string name="name">avg-ore-found-act-5</string>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="name">elevator-used</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">10</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">50</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">250</int>
+				<int name="reputation">7500</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="name">key-found-0</string>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="name">key-found-1</string>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="name">key-found-2</string>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="name">key-found-3</string>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="name">chests-opened</string>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="name">chest-used-wood</string>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="name">chest-used-0</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">10</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">50</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">250</int>
+				<int name="reputation">5000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="name">chest-used-1</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">10</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">50</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">250</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="name">chest-used-2</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">10</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">50</int>
+				<int name="reputation">5000</int>
+			</dict>
+			<dict>
+				<int name="value">250</int>
+				<int name="reputation">15000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="name">chest-used-3</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">5</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">25</int>
+				<int name="reputation">7500</int>
+			</dict>
+			<dict>
+				<int name="value">50</int>
+				<int name="reputation">20000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">3adventuring</string>
+		<string name="name">secrets-found</string>
+		
+		<string name="achievement">find_secrets</string>
+		<int name="achievement-limit">50</int>
+		
+		<array name="rewards">
+			<dict>
+				<int name="value">10</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">100</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">500</int>
+				<int name="reputation">7500</int>
+			</dict>
+		</array>
+	</dict>
+	
+	%// Town
+	<dict>
+		<string name="category">4town</string>
+		<string name="name">ores-stored</string>
+	</dict>
+	
+	<dict>
+		<string name="category">4town</string>
+		<string name="name">gold-stored</string>
+	</dict>
+
+	<dict>
+		<string name="category">4town</string>
+		<string name="name">spent-ore</string>
+		<bool name="town">true</bool>
+	</dict>
+
+	<dict>
+		<string name="category">4town</string>
+		<string name="name">buildings-purchased</string>
+		<bool name="town">true</bool>
+		<array name="rewards">
+			<dict>
+				<int name="value">5</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">10</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">20</int>
+				<int name="reputation">5000</int>
+			</dict>
+			<dict>
+				<int name="value">35</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">4town</string>
+		<string name="name">spent-gold</string>
+		<bool name="town">true</bool>
+		<array name="rewards">
+			<dict>
+				<int name="value">5000</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">25000</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">100000</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">500000</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">2500000</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">4town</string>
+		<string name="name">upgrades-bought</string>
+		<bool name="town">true</bool>
+		<array name="rewards">
+			<dict>
+				<int name="value">10</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">50</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">100</int>
+				<int name="reputation">5000</int>
+			</dict>
+			<dict>
+				<int name="value">250</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+	
+	<dict>
+		<string name="category">4town</string>
+		<string name="name">blessings-purchased</string>
+		<bool name="town">true</bool>
+		<array name="rewards">
+			<dict>
+				<int name="value">3</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">9</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">15</int>
+				<int name="reputation">5000</int>
+			</dict>
+			<dict>
+				<int name="value">21</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">4town</string>
+		<string name="name">fountain-used</string>
+		<bool name="town">true</bool>
+		<array name="rewards">
+			<dict>
+				<int name="value">5</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">25</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">100</int>
+				<int name="reputation">7500</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">4town</string>
+		<string name="name">gambling-gold-won</string>
+		<bool name="town">true</bool>
+		<array name="rewards">
+			<dict>
+				<int name="value">1000</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">10000</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">100000</int>
+				<int name="reputation">7500</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">4town</string>
+		<string name="name">gambling-gold-lost</string>
+		<bool name="town">true</bool>
+	</dict>
+
+
+	%// Items
+	<dict>
+		<string name="category">5items</string>
+		<string name="name">items-picked</string>
+	</dict>
+
+	<dict>
+		<string name="category">5items</string>
+		<string name="name">items-picked-common</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">25</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">100</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">250</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">1000</int>
+				<int name="reputation">5000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">5items</string>
+		<string name="name">items-picked-uncommon</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">25</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">100</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">250</int>
+				<int name="reputation">5000</int>
+			</dict>
+			<dict>
+				<int name="value">1000</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">5items</string>
+		<string name="name">items-picked-rare</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">25</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">100</int>
+				<int name="reputation">5000</int>
+			</dict>
+			<dict>
+				<int name="value">250</int>
+				<int name="reputation">10000</int>
+			</dict>
+			<dict>
+				<int name="value">1000</int>
+				<int name="reputation">15000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">5items</string>
+		<string name="name">items-picked-legendary</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">5</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">25</int>
+				<int name="reputation">7500</int>
+			</dict>
+			<dict>
+				<int name="value">50</int>
+				<int name="reputation">20000</int>
+			</dict>
+			<dict>
+				<int name="value">100</int>
+				<int name="reputation">25000</int>
+			</dict>
+		</array>
+	</dict>
+	
+	<dict>
+		<string name="category">5items</string>
+		<string name="display">none</string>
+		<string name="type">average</string>
+		<string name="name">avg-items-picked</string>
+	</dict>
+
+
+	<dict>
+		<string name="category">5items</string>
+		<string name="display">none</string>
+		<string name="type">average</string>
+		<string name="name">avg-items-picked-act-1</string>
+	</dict>
+
+	<dict>
+		<string name="category">5items</string>
+		<string name="display">none</string>
+		<string name="type">average</string>
+		<string name="name">avg-items-picked-act-2</string>
+	</dict>
+
+	<dict>
+		<string name="category">5items</string>
+		<string name="display">none</string>
+		<string name="type">average</string>
+		<string name="name">avg-items-picked-act-3</string>
+	</dict>
+
+	<dict>
+		<string name="category">5items</string>
+		<string name="display">none</string>
+		<string name="type">average</string>
+		<string name="name">avg-items-picked-act-4</string>
+	</dict>
+
+	<dict>
+		<string name="category">5items</string>
+		<string name="display">none</string>
+		<string name="type">average</string>
+		<string name="name">avg-items-picked-act-5</string>
+	</dict>
+	
+	<dict>
+		<string name="category">5items</string>
+		<string name="name">items-bought</string>
+		<bool name="town">true</bool>
+		<array name="rewards">
+			<dict>
+				<int name="value">10</int>
+				<int name="reputation">250</int>
+			</dict>
+			<dict>
+				<int name="value">100</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">250</int>
+				<int name="reputation">1000</int>
+			</dict>
+			<dict>
+				<int name="value">500</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">1000</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+
+	<dict>
+		<string name="category">5items</string>
+		<string name="name">items-bought-common</string>
+	</dict>
+
+	<dict>
+		<string name="category">5items</string>
+		<string name="name">items-bought-uncommon</string>
+	</dict>
+
+	<dict>
+		<string name="category">5items</string>
+		<string name="name">items-bought-rare</string>
+	</dict>
+	
+	<dict>
+		<string name="category">5items</string>
+		<string name="name">sets-completed</string>
+		<array name="rewards">
+			<dict>
+				<int name="value">5</int>
+				<int name="reputation">500</int>
+			</dict>
+			<dict>
+				<int name="value">25</int>
+				<int name="reputation">2500</int>
+			</dict>
+			<dict>
+				<int name="value">50</int>
+				<int name="reputation">5000</int>
+			</dict>
+			<dict>
+				<int name="value">100</int>
+				<int name="reputation">10000</int>
+			</dict>
+		</array>
+	</dict>
+</array>

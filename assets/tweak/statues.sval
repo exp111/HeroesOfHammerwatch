@@ -1,0 +1,269 @@
+<dict>
+	<array name="aberration-killer">
+		<!-- Level 1-->
+		<dict>
+			<string name="name">aberration 1</string>
+			<string name="desc">very cool skeleton</string>
+
+			<int name="sculpt-cost">3</int>
+
+			<string name="unit">actors/skeleton_1.unit</string>
+			<string name="scene">idle-2</string>
+
+			<array name="colors">
+				<vec4>0 0.025 0 1</vec4>
+				<vec4>0.3 0.85 0 1</vec4>
+				<vec4>0.6 0.8 1 1</vec4>
+			</array>
+		</dict>
+
+		<!-- Level 2 -->
+		<dict>
+			<string name="name">aberration 2</string>
+			<string name="desc">oh man even cooler skeleton</string>
+
+			<int name="sculpt-cost">3</int>
+
+			<string name="unit">actors/skeleton_1.unit</string>
+			<string name="scene">idle-2</string>
+
+			<array name="colors">
+				<vec4>0 0.025 0 1</vec4>
+				<vec4>0.5 0.85 0 1</vec4>
+				<vec4>1 0.8 1 1</vec4>
+			</array>
+
+			<array name="modifiers">
+				<dict>
+					<string name="class">Modifiers::Speed</string>
+					<float name="movement">1</float>
+				</dict>
+			</array>
+		</dict>
+		
+		<!-- Level 3 -->
+		<dict>
+			<string name="name">aberration 3</string>
+			<string name="desc">oh man even cooler skeleton</string>
+
+			<int name="sculpt-cost">3</int>
+
+			<string name="unit">actors/skeleton_1.unit</string>
+			<string name="scene">idle-2</string>
+
+			<array name="colors">
+				<vec4>0 0.025 0 1</vec4>
+				<vec4>0.5 0.85 0 1</vec4>
+				<vec4>1 0.8 1 1</vec4>
+			</array>
+
+			<array name="modifiers">
+				<dict>
+					<string name="class">Modifiers::Speed</string>
+					<float name="movement">1</float>
+				</dict>
+			</array>
+		</dict>
+	</array>
+	
+	<array name="beast-killer">
+		<!-- Level 1-->
+		<dict>
+			<string name="name">beast 1</string>
+			<string name="desc">very cool skeleton</string>
+
+			<int name="sculpt-cost">3</int>
+
+			<string name="unit">actors/skeleton_1.unit</string>
+			<string name="scene">idle-2</string>
+
+			<array name="colors">
+				<vec4>0 0.025 0 1</vec4>
+				<vec4>0.3 0.85 0 1</vec4>
+				<vec4>0.6 0.8 1 1</vec4>
+			</array>
+		</dict>
+
+		<!-- Level 2 -->
+		<dict>
+			<string name="name">beast 2</string>
+			<string name="desc">oh man even cooler skeleton</string>
+
+			<int name="sculpt-cost">3</int>
+
+			<string name="unit">actors/skeleton_1.unit</string>
+			<string name="scene">idle-2</string>
+
+			<array name="colors">
+				<vec4>0 0.025 0 1</vec4>
+				<vec4>0.5 0.85 0 1</vec4>
+				<vec4>1 0.8 1 1</vec4>
+			</array>
+
+			<array name="modifiers">
+				<dict>
+					<string name="class">Modifiers::Speed</string>
+					<float name="movement">1</float>
+				</dict>
+			</array>
+		</dict>
+		
+		<!-- Level 3 -->
+		<dict>
+			<string name="name">beast 3</string>
+			<string name="desc">oh man even cooler skeleton</string>
+
+			<int name="sculpt-cost">3</int>
+
+			<string name="unit">actors/skeleton_1.unit</string>
+			<string name="scene">idle-2</string>
+
+			<array name="colors">
+				<vec4>0 0.025 0 1</vec4>
+				<vec4>0.5 0.85 0 1</vec4>
+				<vec4>1 0.8 1 1</vec4>
+			</array>
+
+			<array name="modifiers">
+				<dict>
+					<string name="class">Modifiers::Speed</string>
+					<float name="movement">1</float>
+				</dict>
+			</array>
+		</dict>
+	</array>
+	
+	<array name="construct-killer">
+		<!-- Level 1-->
+		<dict>
+			<string name="name">construct 1</string>
+			<string name="desc">very cool skeleton</string>
+
+			<int name="sculpt-cost">3</int>
+
+			<string name="unit">actors/skeleton_1.unit</string>
+			<string name="scene">idle-2</string>
+
+			<array name="colors">
+				<vec4>0 0.025 0 1</vec4>
+				<vec4>0.3 0.85 0 1</vec4>
+				<vec4>0.6 0.8 1 1</vec4>
+			</array>
+		</dict>
+
+		<!-- Level 2 -->
+		<dict>
+			<string name="name">construct 2</string>
+			<string name="desc">oh man even cooler skeleton</string>
+
+			<int name="sculpt-cost">3</int>
+
+			<string name="unit">actors/skeleton_1.unit</string>
+			<string name="scene">idle-2</string>
+
+			<array name="colors">
+				<vec4>0 0.025 0 1</vec4>
+				<vec4>0.5 0.85 0 1</vec4>
+				<vec4>1 0.8 1 1</vec4>
+			</array>
+
+			<array name="modifiers">
+				<dict>
+					<string name="class">Modifiers::Speed</string>
+					<float name="movement">1</float>
+				</dict>
+			</array>
+		</dict>
+		
+		<!-- Level 3 -->
+		<dict>
+			<string name="name">construct 3</string>
+			<string name="desc">oh man even cooler skeleton</string>
+
+			<int name="sculpt-cost">3</int>
+
+			<string name="unit">actors/skeleton_1.unit</string>
+			<string name="scene">idle-2</string>
+
+			<array name="colors">
+				<vec4>0 0.025 0 1</vec4>
+				<vec4>0.5 0.85 0 1</vec4>
+				<vec4>1 0.8 1 1</vec4>
+			</array>
+
+			<array name="modifiers">
+				<dict>
+					<string name="class">Modifiers::Speed</string>
+					<float name="movement">1</float>
+				</dict>
+			</array>
+		</dict>
+	</array>
+	
+		<array name="undead-killer">
+		<!-- Level 1-->
+		<dict>
+			<string name="name">skeleton 1</string>
+			<string name="desc">very cool skeleton</string>
+
+			<int name="sculpt-cost">3</int>
+
+			<string name="unit">actors/skeleton_1.unit</string>
+			<string name="scene">idle-2</string>
+
+			<array name="colors">
+				<vec4>0 0.025 0 1</vec4>
+				<vec4>0.3 0.85 0 1</vec4>
+				<vec4>0.6 0.8 1 1</vec4>
+			</array>
+		</dict>
+
+		<!-- Level 2 -->
+		<dict>
+			<string name="name">skeleton 2</string>
+			<string name="desc">oh man even cooler skeleton</string>
+
+			<int name="sculpt-cost">3</int>
+
+			<string name="unit">actors/skeleton_1.unit</string>
+			<string name="scene">idle-2</string>
+
+			<array name="colors">
+				<vec4>0 0.025 0 1</vec4>
+				<vec4>0.5 0.85 0 1</vec4>
+				<vec4>1 0.8 1 1</vec4>
+			</array>
+
+			<array name="modifiers">
+				<dict>
+					<string name="class">Modifiers::Speed</string>
+					<float name="movement">1</float>
+				</dict>
+			</array>
+		</dict>
+		
+		<!-- Level 3 -->
+		<dict>
+			<string name="name">skeleton 2</string>
+			<string name="desc">oh man even cooler skeleton</string>
+
+			<int name="sculpt-cost">3</int>
+
+			<string name="unit">actors/skeleton_1.unit</string>
+			<string name="scene">idle-2</string>
+
+			<array name="colors">
+				<vec4>0 0.025 0 1</vec4>
+				<vec4>0.5 0.85 0 1</vec4>
+				<vec4>1 0.8 1 1</vec4>
+			</array>
+
+			<array name="modifiers">
+				<dict>
+					<string name="class">Modifiers::Speed</string>
+					<float name="movement">1</float>
+				</dict>
+			</array>
+		</dict>
+	</array>
+</dict>

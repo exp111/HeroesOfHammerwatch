@@ -1,0 +1,16 @@
+# Binaries
+*.bin
+*.bin.bak
+
+# Useless folders
+assets/actors/
+assets/doodads/
+assets/effects/
+assets/gui/
+assets/items/
+assets/levels/
+assets/players/
+assets/prefabs/
+assets/sound/
+assets/system/
+assets/tilesets/

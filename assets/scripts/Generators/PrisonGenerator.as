@@ -1,0 +1,99 @@
+[Generator]
+class PrisonGenerator : MinesGenerator
+{
+	void FinalizeRoom(ivec2 tl, ivec2 br) override
+	{
+		int xpos = (tl.x + br.x) / 2;
+		if ((xpos - tl.x) >= 3 && (br.x - xpos) >= 3 && randi(100) < 75)
+		{
+			m_brush.SetCell(xpos, tl.y, Cell::Wall);
+			m_brush.SetCell(xpos, br.y, Cell::Wall);
+			
+			if (randi(100) < 50)
+			{
+				m_brush.SetCell(xpos, tl.y + 1, Cell::Wall);
+				m_brush.SetCell(xpos, br.y - 1, Cell::Wall);
+			}
+			
+			return;
+		}
+		
+		int ypos = (tl.y + br.y) / 2;
+		if ((ypos - tl.y) >= 3 && (br.y - ypos) >= 3 && randi(100) < 75)
+		{
+			m_brush.SetCell(tl.x, ypos, Cell::Wall);
+			m_brush.SetCell(br.x, ypos, Cell::Wall);
+			
+			if (randi(100) < 50)
+			{
+				m_brush.SetCell(tl.x + 1, ypos, Cell::Wall);
+				m_brush.SetCell(br.x - 1, ypos, Cell::Wall);
+			}
+			
+			return;
+		}
+	}
+
+	void PlaceBreakables() override
+	{
+		int w = Width / 16;
+		int h = Height / 16;
+		
+		PlaceCrateBreakables(w, h);
+	}
+
+	float MakeInitialState(array<ivec2>@ junctions, array<ivec2>@ rooms) override
+	{
+		int w = Width / 16;
+		int h = Height / 16;
+	
+		TryMakeRoom(junctions, ivec2(w / 2, h / 2), 10, 12);
+		rooms.insertLast(ivec2(w / 2, h / 2));
+		
+		return 1.f;
+	}
+	
+	void PlacePrefabs(PrefabPlacement@ placer) override
+	{
+		array<PointOfInterestType> specials = { 
+			PointOfInterestType::Prefab13x13North,
+			PointOfInterestType::Prefab9x9North,
+			PointOfInterestType::Prefab5x5North,
+			PointOfInterestType::Prefab3x3North
+			
+			//PointOfInterestType::Prefab9x9South,
+			//PointOfInterestType::Prefab5x5South
+		};
+
+		placer.PlacePrefabs(specials, 2 + (Fountain::HasEffect(FountainEffect::MoreSpecialRooms) ? 2 : 0));
+	
+	
+	
+		array<PointOfInterestType> rooms = {
+			PointOfInterestType::Prefab10x10North2,
+			PointOfInterestType::Prefab10x10South2,
+			PointOfInterestType::Prefab6x6North2,
+			PointOfInterestType::Prefab6x6South2,
+			PointOfInterestType::Prefab9x9East,
+			PointOfInterestType::Prefab5x5East,
+			PointOfInterestType::Prefab9x9West,
+			PointOfInterestType::Prefab5x5West
+		};
+		
+		placer.PlacePrefabs(rooms, 11, 3);
+		
+		
+
+		placer.PlacePrefab(PointOfInterestType::Prefab13x13Block, 1);
+		placer.PlacePrefab(PointOfInterestType::Prefab9x9Block, 1);
+		placer.PlacePrefab(PointOfInterestType::Prefab7x7Block, 2);
+		placer.PlacePrefab(PointOfInterestType::Prefab5x5Block, 3);
+		placer.PlacePrefab(PointOfInterestType::Prefab3x3Block, 4);
+		
+		FillDeadEnds(placer.m_ptrnMtch, m_brush, NumDeadEndsFill);
+		
+		placer.PlacePrefab(PointOfInterestType::Prefab2x6Path, 3 + g_ngp);
+		placer.PlacePrefab(PointOfInterestType::Prefab6x3Path, 3 + g_ngp);
+		placer.PlacePrefab(PointOfInterestType::Prefab2x3Junction, 3 + g_ngp);
+	}
+}

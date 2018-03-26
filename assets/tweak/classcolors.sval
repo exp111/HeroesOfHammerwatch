@@ -1,0 +1,239 @@
+<dict>
+	<!-- All classes: Skin color -->
+	<array name="colors-skin">
+		<array><string>#6d461d</string><string>#a16e26</string><string>#dd9d58</string></array>
+		<array><string>#4a2b09</string><string>#7e4a00</string><string>#ff8400</string></array>
+		<array><string>#2c1904</string><string>#563300</string><string>#9c7d5a</string></array>
+		<array><string>#160c02</string><string>#321f03</string><string>#674c2e</string></array>
+	</array>
+
+	<!-- Paladin -->
+	<array name="class-paladin">
+		<dict>
+			<string name="name">.color.paladin.body</string>
+			<array name="colors">
+				<array><string>#11277a</string><string>#003cff</string><string>#5d9eff</string></array>
+				<array><string>#204609</string><string>#007a06</string><string>#00c337</string></array>
+				<array><string>#690d0d</string><string>#a10000</string><string>#ff0000</string></array>
+				<array><string>#695808</string><string>#c0ac00</string><string>#ffe400</string></array>
+			</array>
+		</dict>
+
+		<dict>
+			<string name="name">.color.paladin.shoulders</string>
+			<array name="colors">
+				<array><string>#11277a</string><string>#003cff</string><string>#5d9eff</string></array>
+				<array><string>#204609</string><string>#007a06</string><string>#00c337</string></array>
+				<array><string>#690d0d</string><string>#a10000</string><string>#ff0000</string></array>
+				<array><string>#695808</string><string>#c0ac00</string><string>#ffe400</string></array>
+			</array>
+		</dict>
+
+		<dict>
+			<string name="name">.color.paladin.guard</string>
+			<array name="colors">
+				<array><string>#11277a</string><string>#003cff</string><string>#5d9eff</string></array>
+				<array><string>#204609</string><string>#007a06</string><string>#00c337</string></array>
+				<array><string>#690d0d</string><string>#a10000</string><string>#ff0000</string></array>
+				<array><string>#695808</string><string>#c0ac00</string><string>#ffe400</string></array>
+			</array>
+		</dict>
+	</array>
+
+	<!-- Ranger -->
+	<array name="class-ranger">
+		<dict>
+			<string name="name">.color.ranger.hood</string>
+			<array name="colors">
+				<array><string>#161b2e</string><string>#404f7e</string><string>#5b82ff</string></array>
+				<array><string>#173206</string><string>#0e7413</string><string>#22d655</string></array>
+				<array><string>#3d0808</string><string>#830000</string><string>#ff0000</string></array>
+				<array><string>#451c36</string><string>#92286b</string><string>#f13eaf</string></array>
+			</array>
+		</dict>
+
+		<dict>
+			<string name="name">.color.ranger.cape</string>
+			<array name="colors">
+				<array><string>#161b2e</string><string>#404f7e</string><string>#5b82ff</string></array>
+				<array><string>#183507</string><string>#006305</string><string>#00c337</string></array>
+				<array><string>#550b0b</string><string>#830000</string><string>#ff0000</string></array>
+				<array><string>#451c36</string><string>#92286b</string><string>#f13eaf</string></array>
+			</array>
+		</dict>
+
+		<dict>
+			<string name="name">.color.ranger.shoulders</string>
+			<array name="colors">
+				<array><string>#161b2e</string><string>#404f7e</string><string>#5b82ff</string></array>
+				<array><string>#204609</string><string>#007a06</string><string>#00c337</string></array>
+				<array><string>#690d0d</string><string>#a10000</string><string>#ff0000</string></array>
+				<array><string>#451c36</string><string>#92286b</string><string>#f13eaf</string></array>
+			</array>
+		</dict>
+	</array>
+
+	<!-- Sorcerer -->
+	<array name="class-sorcerer">
+		<dict>
+			<string name="name">.color.sorc.hat</string>
+			<array name="colors">
+				<array><string>#1a150f</string><string>#6a4a1e</string><string>#9b6934</string></array>
+				<array><string>#1a0f0f</string><string>#6a1e1e</string><string>#ce2d2d</string></array>
+				<array><string>#0f131a</string><string>#186ca1</string><string>#2d9fce</string></array>
+				<array><string>#190f1a</string><string>#601e6a</string><string>#9b3497</string></array>
+			</array>
+		</dict>
+
+		<dict>
+			<string name="name">.color.sorc.robe</string>
+			<array name="colors">
+				<array><string>#0f131a</string><string>#0b466c</string><string>#2d9fce</string></array>
+				<array><string>#142104</string><string>#33610b</string><string>#63c621</string></array>
+				<array><string>#2c0d0d</string><string>#721010</string><string>#e21010</string></array>
+				<array><string>#190f1a</string><string>#3d1044</string><string>#9b3497</string></array>
+			</array>
+		</dict>
+
+		<dict>
+			<string name="name">.color.sorc.border</string>
+			<array name="colors">
+				<array><string>#0f131a</string><string>#0b466c</string><string>#2d9fce</string></array>
+				<array><string>#142104</string><string>#33610b</string><string>#63c621</string></array>
+				<array><string>#2c0d0d</string><string>#721010</string><string>#e21010</string></array>
+				<array><string>#190f1a</string><string>#3d1044</string><string>#9b3497</string></array>
+			</array>
+		</dict>
+	</array>
+
+	<!-- Thief -->
+	<array name="class-thief">
+		<dict>
+			<string name="name">.color.thief.hair</string>
+			<array name="colors">
+				<array><string>#4f3d27</string><string>#a79a40</string><string>#ffeb61</string></array>
+				<array><string>#1a150f</string><string>#6a4a1e</string><string>#9b6934</string></array>
+				<array><string>#131214</string><string>#5a545d</string><string>#766e7a</string></array>
+				<array><string>#1f1f1f</string><string>#969696</string><string>#eaeaea</string></array>
+			</array>
+		</dict>
+		<dict>
+			<string name="name">.color.thief.scarf</string>
+			<array name="colors">
+				<array><string>#36117a</string><string>#5813d5</string><string>#615dff</string></array>
+				<array><string>#3d4609</string><string>#537a00</string><string>#85c300</string></array>
+				<array><string>#690d0d</string><string>#a10000</string><string>#ff0000</string></array>
+				<array><string>#695808</string><string>#c0ac00</string><string>#ffe400</string></array>
+			</array>
+		</dict>
+
+		<dict>
+			<string name="name">.color.thief.jacket</string>
+			<array name="colors">
+				<array><string>#270d44</string><string>#152a6f</string><string>#8149ff</string></array>
+				<array><string>#0c302e</string><string>#15685d</string><string>#16a2a7</string></array>
+				<array><string>#2d0808</string><string>#6c0d0d</string><string>#c01717</string></array>
+				<array><string>#312a07</string><string>#654d0d</string><string>#bd8f14</string></array>
+			</array>
+		</dict>
+	</array>
+
+	<!-- Priest -->
+	<array name="class-priest">
+		<dict>
+			<string name="name">.color.priest.robe</string>
+			<array name="colors">
+				<array><string>#371913</string><string>#bf7f13</string><string>#faff7e</string></array>
+				<array><string>#311337</string><string>#bf138c</string><string>#ff7ea4</string></array>
+				<array><string>#280000</string><string>#720000</string><string>#ce0000</string></array>
+				<array><string>#272623</string><string>#827f77</string><string>#d2cec1</string></array>
+			</array>
+		</dict>
+
+		<dict>
+			<string name="name">.color.priest.cape</string>
+			<array name="colors">
+				<array><string>#354970</string><string>#49669c</string><string>#5494b9</string></array>
+				<array><string>#105f42</string><string>#14855b</string><string>#159f43</string></array>
+				<array><string>#5f104b</string><string>#851469</string><string>#98159f</string></array>
+				<array><string>#8c0008</string><string>#c2000b</string><string>#e4000d</string></array>
+			</array>
+		</dict>
+
+		<dict>
+			<string name="name">.color.priest.mitra</string>
+			<array name="colors">
+				<array><string>#371913</string><string>#bf7f13</string><string>#faff7e</string></array>
+				<array><string>#311337</string><string>#bf138c</string><string>#ff7ea4</string></array>
+				<array><string>#280000</string><string>#720000</string><string>#ce0000</string></array>
+				<array><string>#272623</string><string>#827f77</string><string>#d2cec1</string></array>
+			</array>
+		</dict>
+	</array>
+
+	<!-- Wizard -->
+	<array name="class-wizard">
+		<dict>
+			<string name="name">.color.wizard.robe</string>
+			<array name="colors">
+				<array><string>#161b2e</string><string>#404f7e</string><string>#5b82ff</string></array>
+				<array><string>#001a19</string><string>#00756e</string><string>#00c2b7</string></array>
+				<array><string>#3d0808</string><string>#830000</string><string>#ff0000</string></array>
+				<array><string>#451c36</string><string>#92286b</string><string>#f13eaf</string></array>
+			</array>
+		</dict>
+
+		<dict>
+			<string name="name">.color.wizard.border</string>
+			<array name="colors">
+				<array><string>#0f131a</string><string>#0b466c</string><string>#2d9fce</string></array>
+				<array><string>#142104</string><string>#33610b</string><string>#63c621</string></array>
+				<array><string>#2c0d0d</string><string>#721010</string><string>#e21010</string></array>
+				<array><string>#190f1a</string><string>#3d1044</string><string>#9b3497</string></array>
+			</array>
+		</dict>
+
+		<dict>
+			<string name="name">.color.wizard.staff</string>
+			<array name="colors">
+				<array><string>#270d44</string><string>#152a6f</string><string>#8149ff</string></array>
+				<array><string>#0c302e</string><string>#15685d</string><string>#16a2a7</string></array>
+				<array><string>#2d0808</string><string>#6c0d0d</string><string>#c01717</string></array>
+				<array><string>#312a07</string><string>#654d0d</string><string>#bd8f14</string></array>
+			</array>
+		</dict>
+	</array>
+
+	<!-- Warlock -->
+	<array name="class-warlock">
+		<dict>
+			<string name="name">.color.warlock.helmet</string>
+			<array name="colors">
+				<array><string>#1e1e1e</string><string>#797979</string><string>#cccccc</string></array>
+				<array><string>#280a2b</string><string>#78397f</string><string>#a200ff</string></array>
+				<array><string>#0b2235</string><string>#395f7f</string><string>#88b4d9</string></array>
+				<array><string>#250505</string><string>#831515</string><string>#d91d1d</string></array>
+			</array>
+		</dict>
+
+		<dict>
+			<string name="name">.color.warlock.robe</string>
+			<array name="colors">
+				<array><string>#13001e</string><string>#62009b</string><string>#a200ff</string></array>
+				<array><string>#001a19</string><string>#00756e</string><string>#00c2b7</string></array>
+				<array><string>#2d0808</string><string>#860c0c</string><string>#e51818</string></array>
+				<array><string>#1a1603</string><string>#805f09</string><string>#d7a111</string></array>
+			</array>
+		</dict>
+
+		<dict>
+			<string name="name">.color.warlock.staff</string>
+			<array name="colors">
+				<array><string>#270d44</string><string>#152a6f</string><string>#8149ff</string></array>
+				<array><string>#0c302e</string><string>#15685d</string><string>#16a2a7</string></array>
+				<array><string>#3f3623</string><string>#77603e</string><string>#c7ae7d</string></array>
+				<array><string>#312a07</string><string>#654d0d</string><string>#bd8f14</string></array>
+			</array>
+		</dict>
+	</array>
+</dict>

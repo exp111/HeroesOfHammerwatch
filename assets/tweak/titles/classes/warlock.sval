@@ -1,0 +1,61 @@
+<array>
+	<dict>
+		<string name="name">.titles.shared-0</string>
+	</dict>
+	<dict>
+		<string name="name">.titles.shared-1</string>
+		<dict name="modifier">
+			<string name="class">Modifiers::Armor</string>
+			<int name="resistance">2</float>
+		</dict>
+	</dict>
+	<dict>
+		<string name="name">.titles.shared-2a</string>
+		<dict name="modifier">
+			<string name="class">Modifiers::Armor</string>
+			<int name="resistance">4</float>
+		</dict>
+	</dict>
+	<dict>
+		<string name="name">.titles.warlock-3</string>
+		<dict name="modifier">
+			<string name="class">Modifiers::Armor</string>
+			<int name="resistance">7</float>
+		</dict>
+	</dict>
+	<dict>
+		<string name="name">.titles.warlock-4</string>
+		<dict name="modifier">
+			<string name="class">Modifiers::Armor</string>
+			<int name="resistance">10</float>
+		</dict>
+	</dict>
+	<dict>
+		<string name="name">.titles.warlock-5</string>
+		<dict name="modifier">
+			<string name="class">Modifiers::Armor</string>
+			<int name="resistance">15</float>
+		</dict>
+	</dict>
+	<dict>
+		<string name="name">.titles.warlock-6</string>
+		<dict name="modifier">
+			<string name="class">Modifiers::Armor</string>
+			<int name="resistance">20</float>
+		</dict>
+	</dict>
+	<dict>
+		<string name="name">.titles.warlock-7</string>
+		<dict name="modifier">
+			<string name="class">Modifiers::Armor</string>
+			<int name="resistance">25</float>
+		</dict>
+	</dict>
+	<dict>
+		<string name="name">.titles.warlock-8</string>
+		<dict name="modifier">
+			<string name="class">Modifiers::Armor</string>
+			<int name="resistance">30</float>
+		</dict>
+	</dict>
+</array>
